@@ -62,10 +62,12 @@ export function Hero() {
           <h1 id="hero-title" className="display text-[clamp(3rem,12vw,4.6rem)] text-ink sm:text-[clamp(4rem,8.4vw,6rem)] lg:text-[clamp(4.25rem,5.6vw,6.4rem)]">
             {headline.split(" ").map((word, i) => (
               <Fragment key={i}>
-              <span className="inline-block overflow-hidden pb-[0.1em] align-top">
+              {/* The mask is padded past the tight 0.95 line-height so ascenders (d, f, l, b) and descenders are not
+                  clipped; the matching negative margins keep the line spacing unchanged. */}
+              <span className="-mb-[0.14em] -mt-[0.2em] inline-block overflow-hidden pb-[0.14em] pt-[0.2em] align-top">
                 <motion.span
                   className="inline-block"
-                  initial={reduce ? false : { y: "110%" }}
+                  initial={reduce ? false : { y: "150%" }}
                   animate={{ y: 0 }}
                   transition={{ duration: 1.05, delay: 0.12 + i * 0.045, ease }}
                 >
