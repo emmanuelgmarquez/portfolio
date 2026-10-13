@@ -33,6 +33,13 @@ const columns: WallItem[][] = [
 
 const ease = [0.16, 1, 0.3, 1] as const;
 const headline = "I engineer digital experiences that move brands forward.";
+const specialties = [
+  "Email Development",
+  "Salesforce Marketing Cloud",
+  "CRM",
+  "Marketing Automation",
+  "Digital Experiences",
+];
 
 export function Hero() {
   const ref = useRef<HTMLElement>(null);
@@ -50,15 +57,6 @@ export function Hero() {
       <div className="shell relative grid min-h-[100svh] grid-cols-1 lg:grid-cols-12 lg:gap-8">
         {/* Copy */}
         <div className="relative z-10 flex flex-col justify-center pb-10 pt-28 sm:pt-32 lg:col-span-6 lg:pb-24 lg:pt-36">
-          <motion.p
-            className="mb-7 text-[0.7rem] font-medium tracking-[0.16em] text-muted sm:text-xs"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.1 }}
-          >
-            MARKETING TECHNOLOGY · CRM · DIGITAL DEVELOPMENT
-          </motion.p>
-
           <h1 id="hero-title" className="display text-[clamp(3rem,12vw,4.6rem)] text-ink sm:text-[clamp(4rem,8.4vw,6rem)] lg:text-[clamp(4.25rem,5.6vw,6.4rem)]">
             {headline.split(" ").map((word, i) => (
               <Fragment key={i}>
@@ -83,7 +81,17 @@ export function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, delay: 0.55, ease }}
           >
-            <p className="mt-8 max-w-[34rem] text-[1.075rem] leading-relaxed text-muted sm:text-lg">
+            {/* Every item carries its own marker, so wrapped lines never start with a stray separator. */}
+            <ul aria-label="Specialties" className="mt-8 flex max-w-[36rem] flex-wrap items-center gap-x-5 gap-y-2 text-[0.95rem] font-medium text-ink sm:text-base">
+              {specialties.map((s) => (
+                <li key={s} className="flex items-center gap-x-2">
+                  <span aria-hidden="true" className="h-1.5 w-1.5 shrink-0 rounded-full bg-signal" />
+                  {s}
+                </li>
+              ))}
+            </ul>
+
+            <p className="mt-6 max-w-[34rem] text-[1.075rem] leading-relaxed text-muted sm:text-lg">
               I build the systems behind exceptional marketing, connecting creative, customer data, automation and
               development to deliver sophisticated digital experiences.
             </p>
