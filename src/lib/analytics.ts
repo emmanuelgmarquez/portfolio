@@ -4,7 +4,7 @@
  * The Measurement ID is public (it appears in every page's source), so it can live in code. It can also be
  * overridden with NEXT_PUBLIC_GA_ID in Vercel. Leave both empty to turn analytics off.
  */
-export const GA_ID = process.env.NEXT_PUBLIC_GA_ID || "";
+export const GA_ID = process.env.NEXT_PUBLIC_GA_ID || "G-RSK35N83XK";
 
 type Params = Record<string, string | number | boolean | undefined>;
 
