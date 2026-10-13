@@ -2,9 +2,9 @@ export const site = {
   name: "Emmanuel G. Marquez",
   shortName: "Emmanuel Marquez",
   wordmark: "Emmanuel Marquez",
-  title: "Senior Marketing Technology Specialist",
+  title: "Email, CRM & Marketing Technology Specialist",
   positioning:
-    "Senior Marketing Technology Specialist | Salesforce Marketing Cloud | CRM & Lifecycle Marketing | Front-End Development",
+    "Email Development | Salesforce Marketing Cloud | CRM | Marketing Automation | Digital Experiences",
   description:
     "Emmanuel G. Marquez is a marketing technology specialist in Utah who builds enterprise email, Salesforce Marketing Cloud automation and lifecycle programs for brands in financial services, insurance and healthcare.",
   url: "https://emmanuelgmarquez.com",

@@ -1,6 +1,6 @@
 # Emmanuel G. Marquez: portfolio
 
-The portfolio site for Emmanuel G. Marquez, Senior Marketing Technology Specialist (Salesforce Marketing Cloud, CRM & lifecycle marketing, front-end development).
+The portfolio site for Emmanuel G. Marquez, Email, CRM & Marketing Technology Specialist (email development, Salesforce Marketing Cloud, CRM, marketing automation).
 
 - Homepage: hero with a wall of real project emails, selected work, expertise, experience, about and contact
 - Recognition: FCS Portfolio Awards (Gold, Silver, Bronze) for Bank of America email, with links to the official winners lists
