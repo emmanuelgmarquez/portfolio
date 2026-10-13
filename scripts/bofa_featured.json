@@ -1,0 +1,116 @@
+[
+ {
+  "key": "2023__04-23__04-23-0430__EMAIL-04-23-0430",
+  "slug": "preferred-rewards-travel",
+  "group": "Preferred Rewards lifestyle benefits",
+  "title": "Preferred Rewards: travel experiences",
+  "caption": "Diamond-tier lifestyle benefits for travel: Canyon Ranch, CLEAR and Backroads offers in an editorial, image-led layout.",
+  "mobile": true
+ },
+ {
+  "key": "2023__06-23__EMAIL-06-23-0209__EMAIL-06-23-0209",
+  "slug": "preferred-rewards-vehicles",
+  "group": "Preferred Rewards lifestyle benefits",
+  "title": "Preferred Rewards: luxury vehicles",
+  "caption": "The same lifestyle-benefits system applied to vehicle offers from Mercedes-Benz, Audi and Volvo.",
+  "mobile": true
+ },
+ {
+  "key": "2023__08-23__EMAIL-08-23-0195__EMAIL-08-23-0195",
+  "slug": "preferred-rewards-shopping",
+  "group": "Preferred Rewards lifestyle benefits",
+  "title": "Preferred Rewards: curated shopping",
+  "caption": "Exclusive discounts and gift ideas for Diamond tiers, completing the lifestyle-benefits series.",
+  "mobile": true
+ },
+ {
+  "key": "2024__02-2024__EMAIL-02-24-0228__A__EMAIL-02-24-0228_A",
+  "slug": "preferred-rewards-you-qualify",
+  "group": "Preferred Rewards lifestyle benefits",
+  "title": "Preferred Rewards: you qualify",
+  "caption": "Enrollment email, one of six versions built for different tiers and audiences.",
+  "mobile": false
+ },
+ {
+  "key": "2024__03-2024__EMAIL-03-24-0186__EMAIL-03-24-0186",
+  "slug": "merrill-guided-investing",
+  "group": "Investing with Merrill",
+  "title": "Merrill Guided Investing offer",
+  "caption": "Animated cash-reward offer, three steps to open, and full offer terms with a reward-tier table.",
+  "mobile": true
+ },
+ {
+  "key": "2023__12-23__EMAIL-12-23-0127__EMAIL-12-23-0127",
+  "slug": "merrill-outlook",
+  "group": "Investing with Merrill",
+  "title": "Looking toward a new era of growth",
+  "caption": "Invitation to the Chief Investment Office's 2024 outlook event.",
+  "mobile": false
+ },
+ {
+  "key": "2023__09-23__EMAIL-09-23-0124__EMAIL-09-23-0124_A",
+  "slug": "american-buffalo",
+  "group": "Investing with Merrill",
+  "title": "The American Buffalo",
+  "caption": "Editorial client email built around a single story.",
+  "mobile": false
+ },
+ {
+  "key": "2024__04-2024__EMAIL-04-24-0114__EMAIL-04-24-0114_A",
+  "slug": "homebuyer-english",
+  "group": "Home and auto lending",
+  "title": "Homebuyer program, English",
+  "caption": "Community Affordable Loan Solution mortgage: down payment, zero lender closing costs and numbered disclosures.",
+  "mobile": true
+ },
+ {
+  "key": "2024__04-2024__EMAIL-04-24-0114__EMAIL-04-24-0114_B",
+  "slug": "homebuyer-spanish",
+  "group": "Home and auto lending",
+  "title": "Homebuyer program, Spanish",
+  "caption": "The Spanish build, translated through to alt text, footnote labels and screen-reader text.",
+  "mobile": false
+ },
+ {
+  "key": "2024__06-2024__EMAIL-06-24-0367__EMAIL-06-24-0367_A",
+  "slug": "heloc-renovation",
+  "group": "Home and auto lending",
+  "title": "HELOC renovation",
+  "caption": "Animated kitchen-renovation hero with a special rate offer; version B drops the offer.",
+  "mobile": true,
+  "cropTop": 89,
+  "cropTopMobile": 126
+ },
+ {
+  "key": "2023__12-23__EMAIL-12-23-0161__EMAIL-12-23-0161.A",
+  "slug": "auto-loan",
+  "group": "Home and auto lending",
+  "title": "Auto loan rate reduction",
+  "caption": "Limited-time rate offer for auto loans, one of three versions, with rate disclosures.",
+  "mobile": false
+ },
+ {
+  "key": "2023__08-23__EMAIL-08-23-0383__EMAIL-08-23-0383_A",
+  "slug": "scam-awareness",
+  "group": "Security and everyday banking",
+  "title": "How to help stay ahead of scammers",
+  "caption": "Fraud education in English, Spanish and a Business Advantage version.",
+  "mobile": false
+ },
+ {
+  "key": "2024__05-2024__EMAIL-05-24-0480__EMAIL-05-24-0480",
+  "slug": "merrill-security",
+  "group": "Security and everyday banking",
+  "title": "Merrill account security",
+  "caption": "Security Center animation, biometrics and contact-information steps.",
+  "mobile": false
+ },
+ {
+  "key": "2023__09-23__EMAIL-09-23-0298__EMAIL-09-23-0298_B",
+  "slug": "advantage-savings",
+  "group": "Security and everyday banking",
+  "title": "Boom! You've saved over $500!",
+  "caption": "Savings milestone email featuring Keep the Change, recurring transfers and BankAmeriDeals.",
+  "mobile": false
+ }
+]

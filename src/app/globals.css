@@ -1,0 +1,132 @@
+@import "tailwindcss";
+
+/*
+  Design tokens
+  paper    #EFEFEA  proofing-table grey, the page ground
+  paper-2  #E4E4DD  recessed panels
+  ink      #17191E  text and rules at full strength
+  muted    #5A5E67  secondary text
+  rule     #CFCFC7  hairlines
+  signal   #2340FF  "link blue": the colour of every link in every inbox
+  night    #0C1433  deep ink-blue for the closing section
+*/
+@theme {
+  --color-paper: #efefea;
+  --color-paper-2: #e4e4dd;
+  --color-ink: #17191e;
+  --color-muted: #5a5e67;
+  --color-rule: #cfcfc7;
+  --color-signal: #2340ff;
+  --color-signal-soft: #dfe4ff;
+  --color-night: #0c1433;
+  --color-night-2: #18224a;
+  --color-night-ink: #e9ecf8;
+  --color-night-muted: #9aa3c4;
+  --color-signal-night: #9caeff;
+
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-newsreader), "Iowan Old Style", Georgia, serif;
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --breakpoint-xs: 26rem;
+}
+
+@layer base {
+  html {
+    background: var(--color-paper);
+    color: var(--color-ink);
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+  body {
+    background: var(--color-paper);
+    font-family: var(--font-sans);
+    font-feature-settings: "ss01", "cv11";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: clip;
+  }
+  ::selection {
+    background: var(--color-signal);
+    color: #fff;
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-signal);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+  [id] {
+    scroll-margin-top: 5.5rem;
+  }
+}
+
+@layer components {
+  .display {
+    font-family: var(--font-display);
+    font-variation-settings: "opsz" 72;
+    font-weight: 380;
+    letter-spacing: -0.035em;
+    line-height: 0.95;
+  }
+  .display-tight {
+    font-family: var(--font-display);
+    font-variation-settings: "opsz" 72;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.08;
+  }
+  .shell {
+    width: 100%;
+    max-width: 92rem;
+    margin-inline: auto;
+    padding-inline: 1rem;
+  }
+  @media (min-width: 40rem) {
+    .shell {
+      padding-inline: 2rem;
+    }
+  }
+  @media (min-width: 80rem) {
+    .shell {
+      padding-inline: 3rem;
+    }
+  }
+  .link-underline {
+    background-image: linear-gradient(currentColor, currentColor);
+    background-size: 0% 1px;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    transition: background-size 0.45s var(--ease-out-expo);
+  }
+  .group:hover .link-underline,
+  .link-underline:hover,
+  .group:focus-visible .link-underline {
+    background-size: 100% 1px;
+  }
+  .email-shadow {
+    box-shadow:
+      0 1px 0 rgba(23, 25, 30, 0.06),
+      0 18px 40px -18px rgba(23, 25, 30, 0.35);
+  }
+  .fade-bottom {
+    mask-image: linear-gradient(to bottom, #000 72%, transparent);
+  }
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(23, 25, 30, 0.35) transparent;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
