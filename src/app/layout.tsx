@@ -4,6 +4,7 @@ import { GeistSans } from "geist/font/sans";
 import { site } from "@/lib/site";
 import { SiteHeader } from "@/components/site-header";
 import { MotionProvider } from "@/components/motion-provider";
+import { Analytics } from "@/components/analytics";
 import "./globals.css";
 
 const newsreader = localFont({
@@ -80,6 +81,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           <SiteHeader />
           {children}
         </MotionProvider>
+        <Analytics />
       </body>
     </html>
   );

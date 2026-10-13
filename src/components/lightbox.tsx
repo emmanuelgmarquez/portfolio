@@ -1,5 +1,6 @@
 "use client";
 
+import { track } from "@/lib/analytics";
 import {
   createContext,
   useCallback,
@@ -413,8 +414,14 @@ export function LightboxTrigger({
   children: React.ReactNode;
 }) {
   const { open } = useLightbox();
+  const onOpen = () => {
+    open(src);
+    // e.g. /projects/bank-of-america/featured/merrill.webp → project "bank-of-america", image "merrill"
+    const parts = src.split("/");
+    track("view_full_email", { project: parts[2], image: parts[parts.length - 1]?.replace(/\.\w+$/, "") });
+  };
   return (
-    <button type="button" onClick={() => open(src)} aria-label={label} className={className}>
+    <button type="button" onClick={onOpen} aria-label={label} className={className}>
       {children}
     </button>
   );

@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { Check, Copy } from "lucide-react";
 import { site } from "@/lib/site";
+import { track } from "@/lib/analytics";
 
 type Status = "idle" | "copied" | "failed";
 
@@ -37,6 +38,7 @@ export function CopyEmail() {
     try {
       await writeClipboard(site.email);
       setStatus("copied");
+      track("copy_email");
     } catch {
       setStatus("failed");
     }
