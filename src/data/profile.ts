@@ -46,7 +46,7 @@ export const experience: Role[] = [
   {
     employer: "Snow Companies",
     title: "Lead Email Developer",
-    start: "Oct 2021",
+    start: "Oct 2020",
     end: "Oct 2022",
     summary:
       "Led enterprise email development for healthcare programs: modular templates, cross-client testing, Salesforce-related workflows, quality assurance and technical production.",
@@ -56,7 +56,7 @@ export const experience: Role[] = [
     employer: "Socius Marketing",
     title: "Junior Full-Stack WordPress Developer",
     start: "Jan 2020",
-    end: "Jan 2021",
+    end: "Oct 2020",
     summary:
       "Built and maintained responsive WordPress sites, implementing front-end designs, troubleshooting issues and running website QA.",
     capabilities: ["WordPress", "HTML/CSS", "JavaScript", "CMS maintenance", "Website QA"],
