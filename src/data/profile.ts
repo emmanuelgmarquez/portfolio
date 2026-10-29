@@ -54,12 +54,12 @@ export const experience: Role[] = [
   },
   {
     employer: "Socius Marketing",
-    title: "Junior Full-Stack WordPress Developer",
+    title: "Front-End Developer",
     start: "Jan 2020",
     end: "Oct 2020",
     summary:
-      "Built and maintained responsive WordPress sites, implementing front-end designs, troubleshooting issues and running website QA.",
-    capabilities: ["WordPress", "HTML/CSS", "JavaScript", "CMS maintenance", "Website QA"],
+      "Built and maintained responsive production WordPress sites in HTML, CSS, JavaScript and PHP, including custom page templates using Advanced Custom Fields (ACF), and ran website QA on every change.",
+    capabilities: ["WordPress", "PHP & ACF", "HTML/CSS", "JavaScript", "Website QA"],
   },
 ];
 
