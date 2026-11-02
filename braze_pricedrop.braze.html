@@ -35,6 +35,7 @@
     .container { width:100% !important; }
     .px { padding-left:20px !important; padding-right:20px !important; }
     .stack { display:block !important; width:100% !important; }
+    .stack { padding-left:0 !important; padding-right:0 !important; }
     .stack-gap { padding:0 0 20px 0 !important; }
     .hero-img { width:100% !important; height:auto !important; }
     .h1 { font-size:26px !important; line-height:32px !important; }
@@ -112,7 +113,7 @@
     <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
     {% for p in recs.products limit:2 %}
       <td class="stack {% if forloop.first %}stack-gap{% endif %}" width="50%" valign="top" style="width:50%;padding:0 {% if forloop.first %}10px{% else %}0{% endif %} 0 {% if forloop.first %}0{% else %}10px{% endif %};font-family:Arial,Helvetica,sans-serif;">
-        <a href="{{p.url}}?{{utm}}"><img src="{{p.image}}" width="250" height="250" alt="{{p.name}}" style="width:100%;max-width:250px;height:auto;border-radius:6px;"></a>
+        <a href="{{p.url}}?{{utm}}"><img src="{{p.image}}" width="250" height="250" alt="{{p.name}}" style="width:100%;max-width:250px;height:auto;border-radius:6px;" class="rec-img"></a>
         <p class="dm-text" style="margin:10px 0 2px;font-size:15px;line-height:20px;font-weight:bold;color:#2B211B;">{{p.name}}</p>
         <p class="dm-muted" style="margin:0;font-size:14px;line-height:20px;color:#6E6155;">${{p.price}}</p>
       </td>
