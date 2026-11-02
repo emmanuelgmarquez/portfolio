@@ -1,0 +1,135 @@
+{% comment %}
+  Ridgeline Roasters: Wishlist price drop (Braze action-based email)
+  Trigger: custom event "wishlist_price_drop"
+  Event properties: sku, product_name, product_url, image_url, old_price, new_price  (prices sent as strings, e.g. "28.00")
+  Custom attributes: loyalty_tier ("Gold" | "Silver" | blank), points_balance
+{% endcomment %}
+{% assign old_price = event_properties.${old_price} | plus: 0 %}
+{% assign new_price = event_properties.${new_price} | plus: 0 %}
+{% if event_properties.${product_name} == blank or event_properties.${image_url} == blank or new_price >= old_price %}
+  {% abort_message('wishlist_price_drop: missing product data or no real price drop') %}
+{% endif %}
+{% assign pct_off = old_price | minus: new_price | times: 100 | divided_by: old_price | round %}
+{% assign tier = custom_attribute.${loyalty_tier} | default: 'Member' %}
+{% capture utm %}utm_source=braze&utm_medium=email&utm_campaign={{campaign.${name} | url_encode}}{% endcapture %}
+{% connected_content https://api.ridgeline.example/v1/recs?sku={{event_properties.${sku} | url_encode}}&limit=2 :save recs %}
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="x-apple-disable-message-reformatting">
+<meta name="format-detection" content="telephone=no,address=no,email=no,date=no,url=no">
+<meta name="color-scheme" content="light dark">
+<meta name="supported-color-schemes" content="light dark">
+<title>Price drop on your wishlist</title>
+<!--[if mso]><noscript><xml><o:OfficeDocumentSettings><o:PixelsPerInch>96</o:PixelsPerInch></o:OfficeDocumentSettings></xml></noscript><![endif]-->
+<style>
+  :root { color-scheme: light dark; supported-color-schemes: light dark; }
+  body { margin:0; padding:0; -webkit-text-size-adjust:100%; }
+  table { border-collapse:collapse; }
+  img { border:0; display:block; outline:none; text-decoration:none; -ms-interpolation-mode:bicubic; }
+  a[x-apple-data-detectors] { color:inherit !important; text-decoration:none !important; }
+  .logo-swap { display:none; mso-hide:all; max-height:0; overflow:hidden; }
+  @media screen and (max-width:600px) {
+    .container { width:100% !important; }
+    .px { padding-left:20px !important; padding-right:20px !important; }
+    .stack { display:block !important; width:100% !important; }
+    .stack-gap { padding:0 0 20px 0 !important; }
+    .hero-img { width:100% !important; height:auto !important; }
+    .h1 { font-size:26px !important; line-height:32px !important; }
+  }
+  @media (prefers-color-scheme: dark) {
+    .dm-page { background-color:#14100D !important; }
+    .dm-card { background-color:#1E1813 !important; }
+    .dm-tint { background-color:#2A221B !important; }
+    .dm-line { border-color:#3A3027 !important; }
+    .dm-text { color:#F4ECE0 !important; }
+    .dm-muted { color:#BFB2A3 !important; }
+    .dm-btn { background-color:#E2B857 !important; color:#2B211B !important; }
+    .logo-default { display:none !important; }
+    .logo-swap { display:block !important; max-height:none !important; overflow:visible !important; }
+  }
+  [data-ogsc] .dm-text { color:#F4ECE0 !important; }
+  [data-ogsc] .dm-muted { color:#BFB2A3 !important; }
+</style>
+</head>
+<body class="body dm-page" style="margin:0;padding:0;background-color:#EFE7DB;">
+<div style="display:none;max-height:0;overflow:hidden;mso-hide:all;">{{event_properties.${product_name}}} just dropped {{pct_off}}%. Your wishlist price is waiting.&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;</div>
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" class="dm-page" style="background-color:#EFE7DB;">
+<tr><td align="center" style="padding:24px 12px;">
+<!--[if mso]><table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0"><tr><td><![endif]-->
+<table role="presentation" class="container" width="600" cellpadding="0" cellspacing="0" border="0" style="width:600px;max-width:600px;">
+
+  <!-- Logo -->
+  <tr><td class="dm-card px" align="center" style="background-color:#FBF7F1;padding:26px 40px 18px;">
+    <a href="https://ridgeline.example/?{{utm}}"><img class="logo-default" src="https://YOUR-BRAZE-MEDIA-LIBRARY/ridgeline/rr-logo-dark.png" width="200" height="40" alt="Ridgeline Roasters" style="width:200px;height:auto;">
+    <!--[if !mso]><!--><img class="logo-swap" src="https://YOUR-BRAZE-MEDIA-LIBRARY/ridgeline/rr-logo-light.png" width="200" height="40" alt="Ridgeline Roasters" style="width:200px;height:auto;"><!--<![endif]--></a>
+  </td></tr>
+
+  <!-- Headline -->
+  <tr><td class="dm-card px" align="center" style="background-color:#FBF7F1;padding:8px 40px 6px;font-family:Georgia,'Times New Roman',serif;">
+    <p class="dm-muted" style="margin:0 0 8px;font-family:Arial,Helvetica,sans-serif;font-size:12px;line-height:16px;letter-spacing:2px;text-transform:uppercase;color:#8A5A3B;">Wishlist price drop</p>
+    <h1 class="h1 dm-text" style="margin:0;font-size:30px;line-height:36px;font-weight:normal;color:#2B211B;">{{${first_name} | default: 'Good news'}}, it's {{pct_off}}% off now.</h1>
+  </td></tr>
+
+  <!-- Product (event properties) -->
+  <tr><td class="dm-card px" align="center" style="background-color:#FBF7F1;padding:22px 40px 8px;">
+    <a href="{{event_properties.${product_url}}}?{{utm}}"><img class="hero-img" src="{{event_properties.${image_url}}}" width="300" height="300" alt="{{event_properties.${product_name}}}" style="width:300px;height:auto;border-radius:8px;"></a>
+  </td></tr>
+  <tr><td class="dm-card px" align="center" style="background-color:#FBF7F1;padding:10px 40px 4px;font-family:Arial,Helvetica,sans-serif;">
+    <p class="dm-text" style="margin:0 0 6px;font-size:20px;line-height:26px;font-weight:bold;color:#2B211B;">{{event_properties.${product_name}}}</p>
+    <p style="margin:0;font-size:18px;line-height:24px;"><span class="dm-muted" style="color:#8C7F72;text-decoration:line-through;">${{event_properties.${old_price}}}</span>&nbsp;&nbsp;<strong class="dm-text" style="color:#2B211B;">${{event_properties.${new_price}}}</strong></p>
+  </td></tr>
+
+  <!-- CTA: VML for Outlook desktop, live text everywhere else -->
+  <tr><td class="dm-card px" align="center" style="background-color:#FBF7F1;padding:22px 40px 30px;">
+    <!--[if mso]><v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" href="{{event_properties.${product_url}}}?{{utm}}" style="height:50px;v-text-anchor:middle;width:240px;" arcsize="10%" stroke="f" fillcolor="#2E4036"><w:anchorlock/><center style="color:#FBF7F1;font-family:Arial,sans-serif;font-size:16px;font-weight:bold;">Get it at ${{event_properties.${new_price}}}</center></v:roundrect><![endif]-->
+    <!--[if !mso]><!--><a class="dm-btn" href="{{event_properties.${product_url}}}?{{utm}}" style="display:inline-block;background-color:#2E4036;color:#FBF7F1;font-family:Arial,Helvetica,sans-serif;font-size:16px;font-weight:bold;line-height:50px;padding:0 34px;border-radius:5px;text-decoration:none;">Get it at ${{event_properties.${new_price}}}</a><!--<![endif]-->
+  </td></tr>
+
+  <!-- Loyalty block (custom attributes) -->
+  <tr><td class="dm-card px" style="background-color:#FBF7F1;padding:0 40px 30px;">
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+      <tr><td class="dm-tint" style="background-color:#F3EADC;border-radius:6px;padding:16px 20px;font-family:Arial,Helvetica,sans-serif;font-size:14px;line-height:21px;">
+        {% if tier == 'Gold' %}
+        <span class="dm-text" style="color:#2B211B;"><strong>Gold member perk:</strong> free shipping on this order, plus double points.</span>
+        {% elsif custom_attribute.${points_balance} > 0 %}
+        <span class="dm-text" style="color:#2B211B;"><strong>You have {{custom_attribute.${points_balance}}} points.</strong> Apply them at checkout to save even more.</span>
+        {% else %}
+        <span class="dm-text" style="color:#2B211B;"><strong>Join Ridgeline Rewards</strong> and earn points on this order.</span>
+        {% endif %}
+      </td></tr>
+    </table>
+  </td></tr>
+
+  <!-- Recommendations (Connected Content). Section is hidden if the API returns fewer than 2 items. -->
+  {% if recs.products.size >= 2 %}
+  <tr><td class="dm-card px" style="background-color:#FBF7F1;padding:0 40px 8px;font-family:Georgia,'Times New Roman',serif;">
+    <p class="dm-text dm-line" style="margin:0;padding-top:24px;border-top:1px solid #E4D9C9;font-size:20px;line-height:26px;color:#2B211B;">Pairs well with</p>
+  </td></tr>
+  <tr><td class="dm-card px" style="background-color:#FBF7F1;padding:14px 40px 30px;">
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
+    {% for p in recs.products limit:2 %}
+      <td class="stack {% if forloop.first %}stack-gap{% endif %}" width="50%" valign="top" style="width:50%;padding:0 {% if forloop.first %}10px{% else %}0{% endif %} 0 {% if forloop.first %}0{% else %}10px{% endif %};font-family:Arial,Helvetica,sans-serif;">
+        <a href="{{p.url}}?{{utm}}"><img src="{{p.image}}" width="250" height="250" alt="{{p.name}}" style="width:100%;max-width:250px;height:auto;border-radius:6px;"></a>
+        <p class="dm-text" style="margin:10px 0 2px;font-size:15px;line-height:20px;font-weight:bold;color:#2B211B;">{{p.name}}</p>
+        <p class="dm-muted" style="margin:0;font-size:14px;line-height:20px;color:#6E6155;">${{p.price}}</p>
+      </td>
+    {% endfor %}
+    </tr></table>
+  </td></tr>
+  {% endif %}
+
+  <!-- Footer -->
+  <tr><td class="px" align="center" style="padding:22px 40px;font-family:Arial,Helvetica,sans-serif;font-size:12px;line-height:18px;">
+    <p class="dm-muted" style="margin:0;color:#6E6155;">You're getting this because {{event_properties.${product_name}}} is on your wishlist.<br>
+    <a class="dm-muted" href="{{${preference_center_url}}}" style="color:#6E6155;text-decoration:underline;">Email preferences</a> &nbsp;·&nbsp; <a class="dm-muted" href="{{${set_user_to_unsubscribed_url}}}" style="color:#6E6155;text-decoration:underline;">Unsubscribe</a><br>
+    Ridgeline Roasters · 100 Example Way · Bend, OR 97701</p>
+  </td></tr>
+
+</table>
+<!--[if mso]></td></tr></table><![endif]-->
+</td></tr></table>
+</body>
+</html>
