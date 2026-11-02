@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="x-apple-disable-message-reformatting">
+<meta name="format-detection" content="telephone=no,address=no,email=no,date=no,url=no">
+<meta name="color-scheme" content="light dark">
+<meta name="supported-color-schemes" content="light dark">
+<title>You left something behind</title>
+<style>
+  :root { color-scheme: light dark; supported-color-schemes: light dark; }
+  body { margin:0; padding:0; -webkit-text-size-adjust:100%; }
+  table { border-collapse:collapse; }
+  /* Apple Mail-safe images: absolute https src, explicit width/height attributes, display:block, no lazy-loading, no srcset */
+  img { border:0; display:block; outline:none; text-decoration:none; -ms-interpolation-mode:bicubic; }
+  a[x-apple-data-detectors] { color:inherit !important; text-decoration:none !important; }
+  @media screen and (max-width:600px) {
+    .container { width:100% !important; }
+    .px { padding-left:20px !important; padding-right:20px !important; }
+    .thumb { width:88px !important; }
+    .thumb img { width:88px !important; height:auto !important; }
+  }
+  @media (prefers-color-scheme: dark) {
+    .dm-page { background-color:#0F1115 !important; }
+    .dm-card { background-color:#171A20 !important; }
+    .dm-line { border-color:#2A2F38 !important; }
+    .dm-text { color:#ECEDEF !important; }
+    .dm-muted { color:#A7ACB5 !important; }
+  }
+</style>
+</head>
+<body class="body dm-page" style="margin:0;padding:0;background-color:#F2F2EF;">
+<div style="display:none;max-height:0;overflow:hidden;mso-hide:all;">Your cart is saved and waiting for you.&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;</div>
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" class="dm-page" style="background-color:#F2F2EF;">
+<tr><td align="center" style="padding:24px 12px;">
+<!--[if mso]><table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0"><tr><td><![endif]-->
+<table role="presentation" class="container" width="600" cellpadding="0" cellspacing="0" border="0" style="width:600px;max-width:600px;">
+
+  <tr><td class="dm-card px" align="center" style="background-color:#FFFFFF;padding:28px 40px 8px;">
+    <img src="https://d3k81ch9hvuctc.cloudfront.net/company/YOUR_ID/images/ottermint-logo.png" width="180" height="40" alt="Ottermint" style="width:180px;height:auto;">
+  </td></tr>
+
+  <tr><td class="dm-card px" style="background-color:#FFFFFF;padding:16px 40px 8px;font-family:Arial,Helvetica,sans-serif;">
+    <h1 class="dm-text" style="margin:0 0 8px;font-size:26px;line-height:32px;color:#14213D;">{{ first_name|default:'Hey there' }}, you left something behind</h1>
+    <p class="dm-muted" style="margin:0;font-size:15px;line-height:22px;color:#4A5160;">We saved your cart. Pick up right where you left off.</p>
+  </td></tr>
+
+  <!-- DYNAMIC LINE ITEMS (Shopify "Started Checkout" event) -->
+  <tr><td class="dm-card px" style="background-color:#FFFFFF;padding:16px 40px 4px;">
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+    {% for item in event.extra.line_items %}
+      <tr>
+        <td class="thumb dm-line" width="110" valign="top" style="width:110px;padding:14px 0;border-top:1px solid #E6E6E1;">
+          <a href="{{ event.extra.responsive_checkout_url }}">
+            <img src="{{ item.product.images.0.src|default:'https://d3k81ch9hvuctc.cloudfront.net/company/YOUR_ID/images/placeholder.png' }}" width="110" height="110" alt="{{ item.product.title }}" style="width:110px;height:auto;border-radius:6px;">
+          </a>
+        </td>
+        <td class="dm-line" valign="top" style="padding:14px 0 14px 16px;border-top:1px solid #E6E6E1;font-family:Arial,Helvetica,sans-serif;">
+          <p class="dm-text" style="margin:0 0 4px;font-size:16px;line-height:22px;font-weight:bold;color:#14213D;">{{ item.product.title }}</p>
+          {% if item.variant_title and item.variant_title != 'Default Title' %}<p class="dm-muted" style="margin:0 0 4px;font-size:13px;line-height:18px;color:#6B7280;">{{ item.variant_title }}</p>{% endif %}
+          <p class="dm-muted" style="margin:0;font-size:14px;line-height:20px;color:#4A5160;">Qty {{ item.quantity }} &nbsp;·&nbsp; ${{ item.line_price|floatformat:2 }}</p>
+        </td>
+      </tr>
+    {% endfor %}
+      <tr><td colspan="2" class="dm-line" style="border-top:1px solid #E6E6E1;padding:14px 0 0;font-family:Arial,Helvetica,sans-serif;font-size:15px;line-height:22px;" align="right">
+        <span class="dm-muted" style="color:#4A5160;">Subtotal</span>&nbsp;&nbsp;<strong class="dm-text" style="color:#14213D;">${{ event|lookup:'$value'|floatformat:2 }}</strong>
+      </td></tr>
+    </table>
+  </td></tr>
+
+  <tr><td class="dm-card px" align="center" style="background-color:#FFFFFF;padding:24px 40px 36px;">
+    <!--[if mso]><v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" href="{{ event.extra.responsive_checkout_url }}" style="height:50px;v-text-anchor:middle;width:260px;" arcsize="12%" stroke="f" fillcolor="#2F6F5E"><w:anchorlock/><center style="color:#ffffff;font-family:Arial,sans-serif;font-size:16px;font-weight:bold;">Return to my cart</center></v:roundrect><![endif]-->
+    <!--[if !mso]><!--><a href="{{ event.extra.responsive_checkout_url }}" style="display:inline-block;background-color:#2F6F5E;color:#FFFFFF;font-family:Arial,Helvetica,sans-serif;font-size:16px;font-weight:bold;line-height:50px;padding:0 36px;border-radius:6px;text-decoration:none;">Return to my cart</a><!--<![endif]-->
+  </td></tr>
+
+  <tr><td class="px" align="center" style="padding:20px 40px;font-family:Arial,Helvetica,sans-serif;font-size:12px;line-height:18px;color:#6B7280;">
+    <a href="{% manage_preferences_link %}" style="color:#6B7280;">Manage preferences</a> · <a href="{% unsubscribe_link %}" style="color:#6B7280;">Unsubscribe</a><br>{{ organization.name }} · {{ organization.full_address }}
+  </td></tr>
+
+</table>
+<!--[if mso]></td></tr></table><![endif]-->
+</td></tr></table>
+</body></html>

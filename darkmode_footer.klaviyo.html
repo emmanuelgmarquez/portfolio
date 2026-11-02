@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="x-apple-disable-message-reformatting">
+<meta name="format-detection" content="telephone=no,address=no,email=no,date=no,url=no">
+<!-- 1. Opt in to dark mode so Apple Mail / iOS Mail apply OUR dark palette instead of auto-inverting -->
+<meta name="color-scheme" content="light dark">
+<meta name="supported-color-schemes" content="light dark">
+<title>Kettlewild — dark-mode-safe footer (Klaviyo)</title>
+<!--[if mso]><noscript><xml><o:OfficeDocumentSettings><o:PixelsPerInch>96</o:PixelsPerInch></o:OfficeDocumentSettings></xml></noscript><![endif]-->
+<style>
+  :root { color-scheme: light dark; supported-color-schemes: light dark; }
+  body { margin:0; padding:0; -webkit-text-size-adjust:100%; }
+  table { border-collapse:collapse; }
+  img { border:0; display:block; outline:none; text-decoration:none; }
+  /* iOS auto-detected addresses/phones in the footer turn blue in dark mode - inherit instead */
+  a[x-apple-data-detectors] { color:inherit !important; text-decoration:none !important; font:inherit !important; }
+  .logo-swap { display:none; mso-hide:all; max-height:0; overflow:hidden; }
+
+  @media screen and (max-width:600px) {
+    .container { width:100% !important; }
+    .px { padding-left:20px !important; padding-right:20px !important; }
+    .stack { display:block !important; width:100% !important; text-align:center !important; }
+    .stack-pad { padding-top:16px !important; }
+    .stack img { margin:0 auto !important; }
+    .center-m { float:none !important; margin:0 auto !important; }
+  }
+
+  /* 2. Apple Mail, iOS Mail, Outlook for Mac, Samsung: real dark palette */
+  @media (prefers-color-scheme: dark) {
+    .dm-page   { background-color:#0E1712 !important; }
+    .dm-card   { background-color:#16241B !important; }
+    .dm-footer { background-color:#101A14 !important; border-color:#2A3D30 !important; }
+    .dm-text   { color:#E9E3D6 !important; }
+    .dm-muted  { color:#B8B2A4 !important; }
+    .dm-link   { color:#F6F1E7 !important; }
+    .dm-btn    { background-color:#E2B857 !important; color:#14231A !important; }
+    .logo-default { display:none !important; }
+    .logo-swap { display:block !important; max-height:none !important; overflow:visible !important; }
+  }
+  /* 3. Outlook.com / Outlook apps (they add data-ogsc / data-ogsb when they recolor) */
+  [data-ogsb] .dm-footer { background-color:#101A14 !important; }
+  [data-ogsc] .dm-text   { color:#E9E3D6 !important; }
+  [data-ogsc] .dm-muted  { color:#B8B2A4 !important; }
+  [data-ogsc] .dm-link   { color:#F6F1E7 !important; }
+
+  /* 4. Gmail iOS/Android full color inversion ignores media queries.
+        Blend-mode trick keeps light-on-dark text from being flipped to dark-on-dark.
+        Gmail wraps the body in <u></u>, so "u + .body" only matches inside Gmail. */
+  u + .body .gm-screen { background:#000; mix-blend-mode:screen; }
+  u + .body .gm-diff   { background:#000; mix-blend-mode:difference; }
+</style>
+</head>
+<body class="body dm-page" style="margin:0;padding:0;background-color:#EFE9DC;">
+<div role="article" aria-roledescription="email" aria-label="Kettlewild newsletter" lang="en" style="background-color:#EFE9DC;" class="dm-page">
+<!-- Preheader -->
+<div style="display:none;max-height:0;overflow:hidden;mso-hide:all;">Our winter kettles are back in stock — plus free engraving this week.&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;</div>
+
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" class="dm-page" style="background-color:#EFE9DC;">
+<tr><td align="center" style="padding:24px 12px;">
+  <!--[if mso]><table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0"><tr><td><![endif]-->
+  <table role="presentation" class="container" width="600" cellpadding="0" cellspacing="0" border="0" style="width:600px;max-width:600px;">
+
+    <!-- Header -->
+    <tr><td class="dm-card px" align="center" style="background-color:#F6F1E7;padding:28px 40px 20px;">
+      <img class="logo-default" src="https://d3k81ch9hvuctc.cloudfront.net/company/YOUR_ID/images/logo-dark.png" width="220" height="48" alt="Kettlewild" style="width:220px;height:auto;">
+      <!--[if !mso]><!--><img class="logo-swap" src="https://d3k81ch9hvuctc.cloudfront.net/company/YOUR_ID/images/logo-light.png" width="220" height="48" alt="Kettlewild" style="width:220px;height:auto;"><!--<![endif]-->
+    </td></tr>
+
+    <!-- Hero -->
+    <tr><td><img src="https://d3k81ch9hvuctc.cloudfront.net/company/YOUR_ID/images/hero.jpg" width="600" alt="A copper Kettlewild kettle on a wood stove" style="width:100%;max-width:600px;height:auto;"></td></tr>
+
+    <!-- Body -->
+    <tr><td class="dm-card px" style="background-color:#F6F1E7;padding:32px 40px 8px;font-family:Georgia,'Times New Roman',serif;">
+      <h1 class="dm-text" style="margin:0 0 12px;font-size:28px;line-height:34px;color:#1F3D2B;font-weight:normal;">Hi {{ first_name|default:'there' }}, the Hearth kettle is back.</h1>
+      <p class="dm-text" style="margin:0 0 20px;font-family:Arial,Helvetica,sans-serif;font-size:16px;line-height:24px;color:#2B2B2B;">Hand-spun copper, a whistle you can actually hear from the porch, and — through Sunday — free engraving on every order.</p>
+    </td></tr>
+    <tr><td class="dm-card px" align="left" style="background-color:#F6F1E7;padding:0 40px 36px;">
+      <!--[if mso]><v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" href="https://example.com/hearth" style="height:48px;v-text-anchor:middle;width:220px;" arcsize="10%" stroke="f" fillcolor="#1F3D2B"><w:anchorlock/><center style="color:#F6F1E7;font-family:Arial,sans-serif;font-size:16px;font-weight:bold;">Shop the Hearth</center></v:roundrect><![endif]-->
+      <!--[if !mso]><!--><a class="dm-btn" href="https://example.com/hearth" style="display:inline-block;background-color:#1F3D2B;color:#F6F1E7;font-family:Arial,Helvetica,sans-serif;font-size:16px;font-weight:bold;line-height:48px;padding:0 32px;border-radius:5px;text-decoration:none;">Shop the Hearth</a><!--<![endif]-->
+    </td></tr>
+
+    <!-- ===================== FOOTER MODULE (the part that breaks in dark mode) ===================== -->
+    <tr><td class="dm-footer px" style="background-color:#E7DFCD;border-top:1px solid #D3C8B0;padding:32px 40px;" bgcolor="#E7DFCD">
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="stack" width="50%" valign="middle" style="vertical-align:middle;">
+            <!-- Gmail full-inversion fallback: the halo logo stays legible on BOTH a cream and an inverted (dark) footer.
+                 Apple Mail swaps to the cream-ink logo via the media query above. -->
+            <img class="logo-default" src="https://d3k81ch9hvuctc.cloudfront.net/company/YOUR_ID/images/logo-halo.png" width="160" height="35" alt="Kettlewild" style="width:160px;height:auto;">
+            <!--[if !mso]><!--><img class="logo-swap" src="https://d3k81ch9hvuctc.cloudfront.net/company/YOUR_ID/images/logo-light.png" width="160" height="35" alt="Kettlewild" style="width:160px;height:auto;"><!--<![endif]-->
+          </td>
+          <td class="stack stack-pad" width="50%" align="right" valign="middle" style="vertical-align:middle;">
+            <table role="presentation" class="center-m" cellpadding="0" cellspacing="0" border="0" align="right" style="display:inline-table;">
+              <tr>
+                <!-- Icons are opaque discs with a cream ring: Gmail never inverts images, so they read on light AND dark -->
+                <td style="padding:0 5px;"><a href="https://instagram.com/" target="_blank"><img src="https://d3k81ch9hvuctc.cloudfront.net/company/YOUR_ID/images/ig.png" width="32" height="32" alt="Instagram"></a></td>
+                <td style="padding:0 5px;"><a href="https://facebook.com/" target="_blank"><img src="https://d3k81ch9hvuctc.cloudfront.net/company/YOUR_ID/images/fb.png" width="32" height="32" alt="Facebook"></a></td>
+                <td style="padding:0 0 0 5px;"><a href="https://tiktok.com/" target="_blank"><img src="https://d3k81ch9hvuctc.cloudfront.net/company/YOUR_ID/images/tt.png" width="32" height="32" alt="TikTok"></a></td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+        <tr><td colspan="2" class="dm-muted" style="padding-top:22px;font-family:Arial,Helvetica,sans-serif;font-size:12px;line-height:18px;color:#5A5446;">
+          <div class="gm-screen"><div class="gm-diff">
+            You're receiving this because you signed up at kettlewild.com.<br>
+            <a class="dm-link" href="{% manage_preferences_link %}" style="color:#1F3D2B;text-decoration:underline;">Manage preferences</a>
+            &nbsp;·&nbsp;
+            <a class="dm-link" href="{% unsubscribe_link %}" style="color:#1F3D2B;text-decoration:underline;">Unsubscribe</a><br>
+            {{ organization.name }} · {{ organization.full_address }}
+          </div></div>
+        </td></tr>
+      </table>
+    </td></tr>
+    <!-- =================== /FOOTER MODULE =================== -->
+
+  </table>
+  <!--[if mso]></td></tr></table><![endif]-->
+</td></tr>
+</table>
+</div>
+</body>
+</html>
