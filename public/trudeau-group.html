@@ -188,7 +188,7 @@ footer{padding:30px 0 50px;font-size:.82rem;color:var(--dim);border-top:1px soli
   <div class="wrap">
     <div class="num">02</div>
     <h2>KevinTrudeau.com makes visitors download <em>46 MB of video.</em></h2>
-    <p style="max-width:720px">The homepage has 48 video players. Every one is a full 1080p file. When I opened the page, it pulled down 46 MB of video within seconds, without me scrolling or pressing play. The top video alone is 15.7 MB. On a phone, that's a slow page and a big chunk of someone's data plan before they ever reach a "Buy" button.</p>
+    <p style="max-width:720px">The homepage has 48 video players. Every one is a full 1080p file. When I opened the page, it pulled down 46 MB of video within seconds, without me scrolling or pressing play. Only the top video plays on its own, and that effect should stay. But that one file alone is 15.7 MB. On a phone, that's a slow page and a big chunk of someone's data plan before they ever reach a "Buy" button.</p>
 
     <div class="cols">
       <div>
@@ -217,7 +217,7 @@ video 4     …1080p-7.2Mbps.mp4    6.9 MB</pre>
         </div>
         <p class="label" style="margin-top:24px">How I'd fix it</p>
         <ol class="plan">
-          <li><b>Shrink the hero video</b> to a short, compressed loop (around 1–2 MB) with a smaller mobile version.</li>
+          <li><b>Keep the top video playing, same look.</b> Re-export it as a compressed file (around 1–2 MB) with a smaller mobile version. Visitors see the same effect, just faster.</li>
           <li><b>Load the other videos only when someone presses play.</b> The cover photos are already there, so the page looks the same.</li>
           <li><b>Test before and after</b> with Google PageSpeed Insights and report the change in load time and clicks to the store.</li>
         </ol>
