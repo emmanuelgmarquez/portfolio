@@ -184,38 +184,40 @@ footer{padding:30px 0 50px;font-size:.82rem;color:var(--dim);border-top:1px soli
 <section class="fix" id="fix2">
   <div class="wrap">
     <div class="num">02</div>
-    <h2>TrudeauTraining.com is <em>hidden from Google.</em></h2>
-    <p style="max-width:720px">The home page and the careers page both carry a tag that tells Google not to list them. Unless that's on purpose, someone searching for Kevin's training can't find the site that sells it.</p>
+    <h2>KevinTrudeau.com makes visitors download <em>46 MB of video.</em></h2>
+    <p style="max-width:720px">The homepage has 48 video players. Every one is a full 1080p file. When I opened the page, it pulled down 46 MB of video within seconds, without me scrolling or pressing play. The top video alone is 15.7 MB. On a phone, that's a slow page and a big chunk of someone's data plan before they ever reach a "Buy" button.</p>
 
     <div class="cols">
       <div>
-        <p class="label">The proof · page source, trudeautraining.com</p>
+        <p class="label">The proof · Chrome network log, kevintrudeau.com home page</p>
         <div class="code">
-          <div class="tab"><span class="dot"></span><span class="dot"></span><span class="dot"></span>&nbsp; view-source:trudeautraining.com</div>
-<pre><span class="k">&lt;title&gt;</span>Trudeau Training - Home Page<span class="k">&lt;/title&gt;</span>
-<span class="hl">&lt;meta name=<span class="s">"robots"</span> content=<span class="s">"noindex"</span>&gt;</span>
+          <div class="tab"><span class="dot"></span><span class="dot"></span><span class="dot"></span>&nbsp; Network · Media · page open, no scrolling</div>
+<pre><span class="k">video files requested</span>   52
+<span class="k">video downloaded</span>        <span class="hl">46.0 MB</span>
+<span class="k">video players on page</span>   48  <span style="color:var(--dim)">(23 different videos)</span>
+<span class="k">quality served</span>          1080p only, no mobile version
 
-<span style="color:var(--dim)">&lt;!-- footer --&gt;</span>
-<span class="k">&lt;a</span> href=<span class="hl">"linkedin.com/in/the-kevin-trudeau"</span><span class="k">&gt;</span>Linkedin<span class="k">&lt;/a&gt;</span>
-<span style="color:var(--dim)">&lt;!-- missing https://, so it opens
-     trudeautraining.com/linkedin.com/... (blank page) --&gt;</span></pre>
+<span style="color:var(--dim)">largest files</span>
+hero video  …1080p-7.2Mbps.mp4   <span class="hl">15.7 MB</span>
+video 2     …1080p-4.8Mbps.mp4   13.0 MB
+video 3     …1080p-7.2Mbps.mp4   10.5 MB
+video 4     …1080p-7.2Mbps.mp4    6.9 MB</pre>
         </div>
+        <p style="font-size:.85rem;color:var(--dim);margin-top:12px">For comparison, a typical web page is a few megabytes in total.</p>
       </div>
 
       <div>
-        <p class="label">How I'd fix it · about 15 minutes</p>
-        <ol class="plan">
-          <li><b>Confirm it isn't on purpose,</b> then turn off "noindex" on the pages that should rank.</li>
-          <li><b>Submit the site in Google Search Console</b> so Google picks it up again quickly.</li>
-          <li><b>Fix the LinkedIn link</b> by using the full https:// address.</li>
-        </ol>
-        <div class="serp" aria-label="Example of the site appearing in Google after the fix">
-          <div class="q">kevin trudeau training</div>
-          <span class="tagok">After the fix</span>
-          <div class="site">trudeautraining.com</div>
-          <div class="t">Trudeau Training · Courses and Events with Kevin Trudeau</div>
-          <div class="d">The site shows up in results again, so people searching for Kevin's training land on the page that sells it.</div>
+        <p class="label">Why it costs money</p>
+        <div class="why">
+          <p><b>Speed sells.</b> Google found that 53% of mobile visitors leave a page that takes more than three seconds to load. Every visitor who leaves never sees the offers.</p>
+          <p><b>Paid traffic gets wasted.</b> Ad clicks and email clicks land on this page. A slow first screen burns that spend.</p>
         </div>
+        <p class="label" style="margin-top:24px">How I'd fix it</p>
+        <ol class="plan">
+          <li><b>Shrink the hero video</b> to a short, compressed loop (around 1–2 MB) with a smaller mobile version.</li>
+          <li><b>Load the other videos only when someone presses play.</b> The cover photos are already there, so the page looks the same.</li>
+          <li><b>Test before and after</b> with Google PageSpeed Insights and report the change in load time and clicks to the store.</li>
+        </ol>
       </div>
     </div>
   </div>
