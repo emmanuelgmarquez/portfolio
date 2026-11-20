@@ -50,6 +50,52 @@ function PanelFade({ color }: { color: string }) {
   );
 }
 
+/**
+ * Emails stacked in columns. Short emails in a single row stop halfway down the panel,
+ * so each column holds enough messages to run past the bottom edge into the fade.
+ */
+function StackedColumns({
+  columns,
+  offsets,
+  wide,
+  priority,
+  sizes,
+}: {
+  columns: ProjectImage[][];
+  offsets: string[];
+  wide: boolean;
+  priority: boolean;
+  sizes: string;
+}) {
+  return (
+    <div className={`absolute inset-0 flex justify-center ${wide ? "gap-[3%] px-[8%] lg:px-[14%]" : "gap-[4%] px-[7%]"}`}>
+      {columns.map((col, c) => (
+        <div
+          key={c}
+          className={`flex min-w-0 flex-1 flex-col gap-4 transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-3 ${
+            c > 1 ? "hidden sm:flex" : ""
+          }`}
+          style={{ paddingTop: offsets[c], transitionDelay: `${c * 60}ms` }}
+        >
+          {col.map((im, i) => (
+            <Image
+              key={im.src}
+              src={im.src}
+              width={im.width}
+              height={im.height}
+              alt=""
+              sizes={sizes}
+              quality={90}
+              priority={priority && i === 0}
+              className="email-shadow block h-auto w-full rounded-[3px] bg-white"
+            />
+          ))}
+        </div>
+      ))}
+    </div>
+  );
+}
+
 export function ProjectCover({
   project,
   variant,
@@ -124,23 +170,26 @@ export function ProjectCover({
   }
 
   if (project.slug === "car-t-talk") {
-    const order = [cartAssets.registration, cartAssets.reminder, cartAssets.missed, cartAssets.reminderMerge, cartAssets.final, cartAssets.followUp];
-    const offsets = ["9%", "15%", "5%", "19%", "11%", "7%"];
+    const wide = variant !== "pair";
+    const columns = wide
+      ? [
+          [cartAssets.registration, cartAssets.missed],
+          [cartAssets.reminder, cartAssets.followUp],
+          [cartAssets.reminderMerge, cartAssets.final],
+        ]
+      : [
+          [cartAssets.registration, cartAssets.missed],
+          [cartAssets.reminder, cartAssets.followUp, cartAssets.final],
+        ];
     return (
       <div className={base} style={{ background: panel }}>
-        <div className="absolute inset-0 flex gap-[2.2%] px-[5%]">
-          {order.map((im, i) => (
-            <Sheet
-              key={im.src}
-              image={im}
-              offset={offsets[i]}
-              delay={i * 45}
-              priority={priority && i < 3}
-              sizes="(min-width: 1024px) 15vw, (min-width: 640px) 16vw, 30vw"
-              className={i > 1 ? "hidden sm:block" : ""}
-            />
-          ))}
-        </div>
+        <StackedColumns
+          columns={columns}
+          offsets={wide ? ["6%", "12%", "3%"] : ["6%", "14%"]}
+          wide={wide}
+          priority={priority}
+          sizes={wide ? "(min-width: 1024px) 22vw, (min-width: 640px) 26vw, 42vw" : "(min-width: 1024px) 20vw, 42vw"}
+        />
         <PanelFade color={panel} />
       </div>
     );
@@ -193,25 +242,26 @@ export function ProjectCover({
   }
 
   if (project.slug === "patient-programs") {
-    const order = [patientAssets.ofevMentor, patientAssets.lemsA, patientAssets.ofevReminder, patientAssets.alunbrig, patientAssets.lemsInvite];
-    const offsets = ["10%", "4%", "16%", "8%", "13%"];
     const wide = variant !== "pair";
-    const shown = wide ? order : order.slice(0, 3);
+    const columns = wide
+      ? [
+          [patientAssets.ofevMentor, patientAssets.ofevReminder, patientAssets.ofevMissed],
+          [patientAssets.lemsA],
+          [patientAssets.alunbrig, patientAssets.lemsInvite],
+        ]
+      : [
+          [patientAssets.lemsA],
+          [patientAssets.ofevMentor, patientAssets.ofevReminder, patientAssets.alunbrig],
+        ];
     return (
       <div className={base} style={{ background: panel }}>
-        <div className={`absolute inset-0 flex gap-[2.5%] ${wide ? "px-[6%]" : "px-[7%]"}`}>
-          {shown.map((im, i) => (
-            <Sheet
-              key={im.src}
-              image={im}
-              offset={offsets[i]}
-              delay={i * 45}
-              priority={priority && i < 2}
-              sizes={wide ? "(min-width: 1024px) 17vw, (min-width: 640px) 18vw, 45vw" : "(min-width: 1024px) 14vw, 30vw"}
-              className={i > 1 ? "hidden sm:block" : ""}
-            />
-          ))}
-        </div>
+        <StackedColumns
+          columns={columns}
+          offsets={wide ? ["8%", "3%", "12%"] : ["5%", "12%"]}
+          wide={wide}
+          priority={priority}
+          sizes={wide ? "(min-width: 1024px) 22vw, (min-width: 640px) 26vw, 42vw" : "(min-width: 1024px) 20vw, 42vw"}
+        />
         <PanelFade color={panel} />
       </div>
     );
