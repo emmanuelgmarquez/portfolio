@@ -27,6 +27,15 @@
 </style>
 <![endif]-->
 
+<!-- Web font for clients that load it. Hidden from Outlook on Windows: newer Outlook (2019, 365, 2024) reads the
+     first family in an inline stack, finds no Cormorant Garamond and drops to Calibri, ignoring the MSO override.
+     So the inline stack starts with Georgia and the web font is added here, where Outlook never sees it. -->
+<!--[if !mso]><!-->
+<style>
+  .serif { font-family: 'Cormorant Garamond', Georgia, 'Times New Roman', serif !important; }
+</style>
+<!--<![endif]-->
+
 <!-- 1. Rules that must stay in the head: font loading, client resets, media queries, dark mode. juice leaves this block alone. -->
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500%3B600&display=swap');
@@ -118,13 +127,23 @@
 
   <!-- ============ LOGO BAR ============ -->
   <tr>
-    <td class="gutter" align="center" style="padding: 0; padding-left: 36px; padding-right: 36px; padding-top: 28px; padding-bottom: 24px;">
+    <td class="gutter" align="center" style="padding: 0; padding-left: 36px; padding-right: 36px; padding-top: 28px; padding-bottom: 24px; mso-padding-alt: 0;">
+      <!--[if mso]>
+      <v:rect xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false" fillcolor="#FAF8F4" style="width:600px; height:84px;">
+      <v:textbox inset="0,0,0,0">
+      <table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0"><tr><td width="600" height="84" align="center" valign="middle">
+      <![endif]-->
       <a href="https://emmanuelgmarquez.com/work/atelier-oak-concept" style="text-decoration:none;">
         <img class="swap-light" src="https://emmanuelgmarquez.com/email-samples/atelier-oak/images/logo-light.png" width="208" height="32" alt="Atelier &amp; Oak" style="text-decoration: none; line-height: 100%; display: block; width: 208px; height: 32px; border: 0; margin: 0 auto;">
         <!--[if !mso]><!-->
         <img class="swap-dark" src="https://emmanuelgmarquez.com/email-samples/atelier-oak/images/logo-dark.png" width="208" height="32" alt="Atelier &amp; Oak" style="text-decoration: none; line-height: 100%; display: none; width: 208px; height: 32px; max-height: 0; overflow: hidden; border: 0; margin: 0 auto; mso-hide: all;">
         <!--<![endif]-->
       </a>
+      <!--[if mso]>
+      </td></tr></table>
+      </v:textbox>
+      </v:rect>
+      <![endif]-->
     </td>
   </tr>
 
@@ -145,7 +164,7 @@
         <tr>
           <td bgcolor="#FAF8F4" style="background-color: #FAF8F4; padding: 28px 28px 30px 28px;">
             <p class="eyebrow sans" style="font-family: Arial, Helvetica, sans-serif; margin: 0; font-size: 14px; line-height: 20px; mso-line-height-rule: exactly; font-weight: bold; letter-spacing: 2px; text-transform: uppercase; color: #7A4E22;">Autumn 2026</p>
-            <h1 class="h1 serif" style="font-family: 'Cormorant Garamond', Georgia, 'Times New Roman', serif; margin: 0; font-size: 40px; line-height: 44px; mso-line-height-rule: exactly; font-weight: 500; color: #1F1D1A; margin-top: 10px;">The Hearth Collection</h1>
+            <h1 class="h1 serif" style="font-family: Georgia, 'Times New Roman', serif; margin: 0; font-size: 40px; line-height: 44px; mso-line-height-rule: exactly; font-weight: 500; color: #1F1D1A; margin-top: 10px;">The Hearth Collection</h1>
             <p class="body sans" style="font-family: Arial, Helvetica, sans-serif; margin: 0; font-size: 16px; line-height: 26px; mso-line-height-rule: exactly; font-weight: normal; color: #1F1D1A; margin-top: 12px;">Four new pieces for the season of staying in.</p>
           </td>
         </tr>
@@ -159,7 +178,7 @@
           <tr>
             <td bgcolor="#1C1B19" style="background-color: #1C1B19; padding: 28px 28px 30px 28px;">
               <p class="eyebrow sans" style="font-family: Arial, Helvetica, sans-serif; margin: 0; font-size: 14px; line-height: 20px; mso-line-height-rule: exactly; font-weight: bold; letter-spacing: 2px; text-transform: uppercase; color: #E0B37E;">Autumn 2026</p>
-              <h1 class="h1 serif" style="font-family: 'Cormorant Garamond', Georgia, 'Times New Roman', serif; margin: 0; font-size: 40px; line-height: 44px; mso-line-height-rule: exactly; font-weight: 500; color: #F2EEE7; margin-top: 10px;">The Hearth Collection</h1>
+              <h1 class="h1 serif" style="font-family: Georgia, 'Times New Roman', serif; margin: 0; font-size: 40px; line-height: 44px; mso-line-height-rule: exactly; font-weight: 500; color: #F2EEE7; margin-top: 10px;">The Hearth Collection</h1>
               <p class="body sans" style="font-family: Arial, Helvetica, sans-serif; margin: 0; font-size: 16px; line-height: 26px; mso-line-height-rule: exactly; font-weight: normal; color: #F2EEE7; margin-top: 12px;">Four new pieces for the season of staying in.</p>
             </td>
           </tr>
@@ -209,7 +228,7 @@
   <tr>
     <td class="bg-panel gutter" style="padding: 0; background-color: #E9E2D6; padding-left: 36px; padding-right: 36px; padding-top: 36px; padding-bottom: 44px;">
       <p class="eyebrow sans accent" style="color: #7A4E22; font-family: Arial, Helvetica, sans-serif; margin: 0; font-size: 14px; line-height: 20px; mso-line-height-rule: exactly; font-weight: bold; letter-spacing: 2px; text-transform: uppercase;">From the workshop</p>
-      <h2 class="h2 serif ink" style="color: #1F1D1A; font-family: 'Cormorant Garamond', Georgia, 'Times New Roman', serif; margin: 0; font-size: 30px; line-height: 36px; mso-line-height-rule: exactly; font-weight: 500; margin-top: 10px;">Drawn by hand, then made by it</h2>
+      <h2 class="h2 serif ink" style="color: #1F1D1A; font-family: Georgia, 'Times New Roman', serif; margin: 0; font-size: 30px; line-height: 36px; mso-line-height-rule: exactly; font-weight: 500; margin-top: 10px;">Drawn by hand, then made by it</h2>
       <p class="body sans ink" style="color: #1F1D1A; font-family: Arial, Helvetica, sans-serif; margin: 0; font-size: 16px; line-height: 26px; mso-line-height-rule: exactly; font-weight: normal; margin-top: 14px;">Every Hearth piece starts as a pencil line on a board. Lead designer Ines Halvard works at full scale on the bench, so a curve is judged by eye and by hand before it is ever cut.</p>
       <p class="body sans ink" style="color: #1F1D1A; font-family: Arial, Helvetica, sans-serif; margin: 0; font-size: 16px; line-height: 26px; mso-line-height-rule: exactly; font-weight: normal; margin-top: 14px;">&ldquo;If a joint is honest, you never have to hide it,&rdquo; she says. So we don&rsquo;t.</p>
       <p class="body sans" style="font-family: Arial, Helvetica, sans-serif; margin: 0; font-size: 16px; line-height: 26px; mso-line-height-rule: exactly; font-weight: normal; margin-top: 18px;"><a class="link accent sans" href="https://emmanuelgmarquez.com/work/atelier-oak-concept" style="color: #7A4E22; font-family: Arial, Helvetica, sans-serif; text-decoration: underline; font-weight: bold;">Read the making of Hearth</a></p>

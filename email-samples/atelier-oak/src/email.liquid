@@ -39,6 +39,15 @@
 </style>
 <![endif]-->
 
+<!-- Web font for clients that load it. Hidden from Outlook on Windows: newer Outlook (2019, 365, 2024) reads the
+     first family in an inline stack, finds no Cormorant Garamond and drops to Calibri, ignoring the MSO override.
+     So the inline stack starts with Georgia and the web font is added here, where Outlook never sees it. -->
+<!--[if !mso]><!-->
+<style data-embed>
+  .serif { font-family: 'Cormorant Garamond', Georgia, 'Times New Roman', serif !important; }
+</style>
+<!--<![endif]-->
+
 <!-- 1. Rules that must stay in the head: font loading, client resets, media queries, dark mode. juice leaves this block alone. -->
 <style data-embed>
   @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500%3B600&display=swap');
@@ -122,7 +131,7 @@
   .ink { color: #1F1D1A; }
   .muted { color: #5C564D; }
   .accent { color: #7A4E22; }
-  .serif { font-family: 'Cormorant Garamond', Georgia, 'Times New Roman', serif; }
+  .serif { font-family: Georgia, 'Times New Roman', serif; }
   .sans { font-family: Arial, Helvetica, sans-serif; }
   .gutter { padding-left: 36px; padding-right: 36px; }
   .eyebrow { margin: 0; font-size: 14px; line-height: 20px; mso-line-height-rule: exactly; font-weight: bold; letter-spacing: 2px; text-transform: uppercase; }
@@ -154,13 +163,23 @@
 
   <!-- ============ LOGO BAR ============ -->
   <tr>
-    <td class="gutter" align="center" style="padding-top:28px; padding-bottom:24px;">
+    <td class="gutter" align="center" style="padding-top:28px; padding-bottom:24px; mso-padding-alt:0;">
+      <!--[if mso]>
+      <v:rect xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false" fillcolor="#FAF8F4" style="width:600px; height:84px;">
+      <v:textbox inset="0,0,0,0">
+      <table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0"><tr><td width="600" height="84" align="center" valign="middle">
+      <![endif]-->
       <a href="{{ cta_url }}" style="text-decoration:none;">
         <img class="swap-light" src="{{ asset_base }}/logo-light.png" width="208" height="32" alt="Atelier &amp; Oak" style="display:block; width:208px; height:32px; border:0; margin:0 auto;">
         <!--[if !mso]><!-->
         <img class="swap-dark" src="{{ asset_base }}/logo-dark.png" width="208" height="32" alt="Atelier &amp; Oak" style="display:none; width:208px; height:32px; max-height:0; overflow:hidden; border:0; margin:0 auto; mso-hide:all;">
         <!--<![endif]-->
       </a>
+      <!--[if mso]>
+      </td></tr></table>
+      </v:textbox>
+      </v:rect>
+      <![endif]-->
     </td>
   </tr>
 
