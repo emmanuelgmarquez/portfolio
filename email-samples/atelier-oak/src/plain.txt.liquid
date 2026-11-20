@@ -1,0 +1,56 @@
+{%- assign cta_url = collection_url | default: "https://emmanuelgmarquez.com/work/atelier-oak-concept" -%}
+ATELIER & OAK
+
+THE HEARTH COLLECTION
+Autumn 2026
+Four new pieces for the season of staying in.
+
+Hi {{ first_name | default: "there" }},
+
+The light is lower and the evenings are longer, so we made furniture for exactly that. The Hearth Collection is four pieces in oak, walnut, brass and bouclé, drawn in our studio and built to be used every day for a very long time.
+
+Each one is available to order from today.
+{%- if products and products.size > 0 %}
+
+------------------------------------------------------------
+NEW THIS SEASON
+------------------------------------------------------------
+{%- for product in products limit:4 %}
+
+{{ product.name | default: "New arrival" }}
+{{ product.material | default: "Made to order" }}
+{%- if product.sale_price %}
+Now {{ product.sale_price }} (was {{ product.price | default: "" }})
+{%- else %}
+{{ product.price | default: "Price on request" }}
+{%- endif %}
+{{ product.url | default: cta_url }}
+{%- endfor %}
+{%- endif %}
+
+Explore the collection:
+{{ cta_url }}
+
+------------------------------------------------------------
+FROM THE WORKSHOP
+Drawn by hand, then made by it
+------------------------------------------------------------
+
+Every Hearth piece starts as a pencil line on a board. Lead designer Ines Halvard works at full scale on the bench, so a curve is judged by eye and by hand before it is ever cut.
+
+"If a joint is honest, you never have to hide it," she says. So we don't.
+
+Read the making of Hearth:
+{{ story_url | default: cta_url }}
+
+------------------------------------------------------------
+
+You are receiving this because you asked to hear about new collections from Atelier & Oak.
+
+{{ company_address | default: "Atelier & Oak, [Street address], [City, State ZIP]" }}
+
+Unsubscribe: {{ unsubscribe_url | default: cta_url }}
+Email preferences: {{ preferences_url | default: cta_url }}
+View in browser: {{ view_online_url | default: "https://emmanuelgmarquez.com/email-samples/atelier-oak/index.html" }}
+
+Concept piece. Atelier & Oak is a fictional brand; this email was designed and hand-coded by Emmanuel G. Marquez as a portfolio study.

@@ -1,0 +1,38 @@
+<!-- AI FIRST DRAFT. Saved as generated, unedited. Do not send. See audit.md. -->
+<style>
+  .products { display: flex; flex-wrap: wrap; gap: 24px; margin: 0 auto; max-width: 600px; }
+  .product { flex: 1 1 calc(50% - 12px); background: #fff; border-radius: 12px; box-shadow: 0 4px 16px rgba(0,0,0,.08); overflow: hidden; }
+  .product img { width: 100%; object-fit: cover; aspect-ratio: 4/5; }
+  .product h3 { font: 600 1.25rem/1.3 'Cormorant Garamond', serif; margin: 16px 16px 4px; color: #000; }
+  .product p { font-size: 12px; color: #999; margin: 0 16px; }
+  .price { font: bold 1rem Arial; margin: 8px 16px 16px; }
+  .price .sale { color: #c0392b; }
+  .price .was { text-decoration: line-through; opacity: .5; }
+  @media (max-width: 480px) { .product { flex-basis: 100%; } }
+</style>
+
+<table width="600" align="center">
+  <tr>
+    <td>
+      <h2 style="font: 500 30px 'Cormorant Garamond', serif; margin: 0 0 16px;">New this season</h2>
+      <div class="products">
+        {% for product in products %}
+        <div class="product">
+          <a href="{{ product.url }}"><img src="{{ product.image_url }}"></a>
+          <h3>{{ product.name }}</h3>
+          <p>{{ product.material }}</p>
+          <table class="price">
+            <tr>
+              {% if product.sale_price %}
+              <td class="sale">{{ product.sale_price }}</td>
+              <td class="was">{{ product.price }}
+              {% else %}
+              <td>{{ product.price }}</td>
+              {% endif %}
+          </table>
+        </div>
+        {% endfor %}
+      </div>
+    </td>
+  </tr>
+</table>
