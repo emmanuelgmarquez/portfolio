@@ -263,10 +263,12 @@ export function ClientTests({ concept }: { concept: ConceptStudy }) {
             <p className="max-w-[30rem] text-lg leading-relaxed text-muted">
               {done === 0
                 ? "Not yet. This is the test plan, and every client on it is pending. A client is marked tested only when its real screenshot is added here; the automated checks and Chromium renders above do not count."
-                : "A client is marked tested only when its real screenshot is shown here. The rest are still pending."}
+                : done === tests.length
+                  ? "Real renders from Email on Acid (Mailgun Inspect), not emulations. The first run caught two Outlook bugs, the button label going dark in Outlook's dark mode and the layout stretching to 648px in classic Outlook, both fixed before these screenshots were taken. Select any client to see the full render."
+                  : "A client is marked tested only when its real screenshot is shown here. The rest are still pending."}
             </p>
             <p className="mt-4 text-sm tabular-nums text-muted">
-              {done} of {tests.length} tested, {tests.length - done} pending
+              {done === tests.length ? `${done} clients tested` : `${done} of ${tests.length} tested, ${tests.length - done} pending`}
             </p>
           </div>
         </div>

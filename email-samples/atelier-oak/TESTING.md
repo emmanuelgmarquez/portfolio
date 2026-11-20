@@ -2,8 +2,19 @@
 
 **Concept piece.** Atelier & Oak is a fictional brand.
 
-**Status: every client below is PENDING.** The automated checks and the Chromium screenshots in this folder
-are not client tests. A client moves off PENDING only when there is a real screenshot of it.
+**Status (20 Nov 2026): tested on Email on Acid (Mailgun Inspect), all 103 clients.** The screenshots on the
+case study page are real client renders from that run, filed as `assets-source/atelier-oak-concept/client-<id>.jpg`.
+Samsung Mail is not in Mailgun Inspect's client list, so it was replaced on the page by Outlook 2016 at 125%
+scaling and Outlook 2024 dark mode. The seed sends in section 2 have not been done.
+
+The first run found two Outlook bugs that the automated checks did not:
+
+1. **Outlook 2024, Windows, dark mode:** the VML button label turned dark on the dark button. Fixed with
+   `mso-color-alt:auto` on the label.
+2. **Classic Outlook (2016, 2019, 365, 2024):** the whole email rendered at 648px. The hero cell's 24px padding
+   was added around the 600px VML rect. Fixed with `mso-padding-alt:0` on the hero cell and a 552px inner cell.
+
+Both were re-tested on all clients before the screenshots were taken.
 
 ## 0. Before you test: the images have to be online
 

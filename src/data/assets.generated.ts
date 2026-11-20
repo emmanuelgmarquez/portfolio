@@ -56,6 +56,70 @@ export const imageSizes: Record<string, { width: number; height: number }> = {
     "width": 1200,
     "height": 724
   },
+  "/projects/atelier-oak-concept/client-apple-mail-ios-dark.webp": {
+    "width": 402,
+    "height": 4182
+  },
+  "/projects/atelier-oak-concept/client-apple-mail-ios-light.webp": {
+    "width": 402,
+    "height": 4182
+  },
+  "/projects/atelier-oak-concept/client-apple-mail-macos-dark.webp": {
+    "width": 1000,
+    "height": 2896
+  },
+  "/projects/atelier-oak-concept/client-apple-mail-macos-light.webp": {
+    "width": 1000,
+    "height": 2896
+  },
+  "/projects/atelier-oak-concept/client-gmail-android.webp": {
+    "width": 1000,
+    "height": 11178
+  },
+  "/projects/atelier-oak-concept/client-gmail-ios.webp": {
+    "width": 1000,
+    "height": 10517
+  },
+  "/projects/atelier-oak-concept/client-gmail-web.webp": {
+    "width": 1000,
+    "height": 2242
+  },
+  "/projects/atelier-oak-concept/client-outlook-2016-windows-125.webp": {
+    "width": 1000,
+    "height": 2900
+  },
+  "/projects/atelier-oak-concept/client-outlook-2016-windows.webp": {
+    "width": 1000,
+    "height": 2310
+  },
+  "/projects/atelier-oak-concept/client-outlook-2019-windows.webp": {
+    "width": 1000,
+    "height": 2307
+  },
+  "/projects/atelier-oak-concept/client-outlook-2024-windows-dark.webp": {
+    "width": 1000,
+    "height": 2899
+  },
+  "/projects/atelier-oak-concept/client-outlook-365-windows.webp": {
+    "width": 967,
+    "height": 2897
+  },
+  "/projects/atelier-oak-concept/client-outlook-com-dark.webp": {
+    "width": 1000,
+    "height": 2879
+  },
+  "/projects/atelier-oak-concept/client-outlook-com-light.webp": {
+    "width": 1000,
+    "height": 2879
+  },
+  "/projects/atelier-oak-concept/client-outlook-new-windows.webp": {
+    "width": 1000,
+    "height": 2909
+  },
+  "/projects/atelier-oak-concept/client-yahoo-mail.webp": {
+    "width": 1000,
+    "height": 2328
+  },
   "/projects/car-t-talk/01-registration-scheduling.webp": {
     "width": 974,
     "height": 2250

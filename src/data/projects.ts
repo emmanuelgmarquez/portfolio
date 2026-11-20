@@ -58,7 +58,7 @@ export type ClientTest = {
   /** Screenshot file name: assets-source/<slug>/client-<id>.png */
   id: string;
   name: string;
-  group: "Litmus or Email on Acid" | "Seed send";
+  group: "Email on Acid (Mailgun Inspect)" | "Seed send";
   /** Present only when the owner has added a real screenshot. Without it the client shows as PENDING. */
   image?: ProjectImage;
 };
@@ -293,24 +293,22 @@ const atelier = {
 };
 
 const atelierClients: [string, string, ClientTest["group"]][] = [
-  ["outlook-2016-windows", "Outlook 2016, Windows", "Litmus or Email on Acid"],
-  ["outlook-2019-windows", "Outlook 2019, Windows", "Litmus or Email on Acid"],
-  ["outlook-365-windows", "Outlook 365, Windows", "Litmus or Email on Acid"],
-  ["outlook-new-windows", "New Outlook, Windows", "Litmus or Email on Acid"],
-  ["outlook-com-light", "Outlook.com, light", "Litmus or Email on Acid"],
-  ["outlook-com-dark", "Outlook.com, dark", "Litmus or Email on Acid"],
-  ["gmail-web", "Gmail, web", "Litmus or Email on Acid"],
-  ["gmail-ios", "Gmail app, iOS", "Litmus or Email on Acid"],
-  ["gmail-android", "Gmail app, Android", "Litmus or Email on Acid"],
-  ["apple-mail-macos-light", "Apple Mail, macOS, light", "Litmus or Email on Acid"],
-  ["apple-mail-macos-dark", "Apple Mail, macOS, dark", "Litmus or Email on Acid"],
-  ["apple-mail-ios-light", "Apple Mail, iOS, light", "Litmus or Email on Acid"],
-  ["apple-mail-ios-dark", "Apple Mail, iOS, dark", "Litmus or Email on Acid"],
-  ["samsung-mail", "Samsung Mail", "Litmus or Email on Acid"],
-  ["yahoo-mail", "Yahoo Mail", "Litmus or Email on Acid"],
-  ["seed-gmail", "Gmail inbox", "Seed send"],
-  ["seed-outlook-com", "Outlook.com inbox", "Seed send"],
-  ["seed-iphone", "iPhone", "Seed send"],
+  ["outlook-2016-windows", "Outlook 2016, Windows", "Email on Acid (Mailgun Inspect)"],
+  ["outlook-2016-windows-125", "Outlook 2016, Windows, 125% scaling", "Email on Acid (Mailgun Inspect)"],
+  ["outlook-2019-windows", "Outlook 2019, Windows", "Email on Acid (Mailgun Inspect)"],
+  ["outlook-365-windows", "Outlook 365, Windows", "Email on Acid (Mailgun Inspect)"],
+  ["outlook-2024-windows-dark", "Outlook 2024, Windows, dark", "Email on Acid (Mailgun Inspect)"],
+  ["outlook-new-windows", "New Outlook, Windows", "Email on Acid (Mailgun Inspect)"],
+  ["outlook-com-light", "Outlook.com, light", "Email on Acid (Mailgun Inspect)"],
+  ["outlook-com-dark", "Outlook.com, dark", "Email on Acid (Mailgun Inspect)"],
+  ["gmail-web", "Gmail, web", "Email on Acid (Mailgun Inspect)"],
+  ["gmail-ios", "Gmail app, iOS", "Email on Acid (Mailgun Inspect)"],
+  ["gmail-android", "Gmail app, Android", "Email on Acid (Mailgun Inspect)"],
+  ["apple-mail-macos-light", "Apple Mail, macOS, light", "Email on Acid (Mailgun Inspect)"],
+  ["apple-mail-macos-dark", "Apple Mail, macOS, dark", "Email on Acid (Mailgun Inspect)"],
+  ["apple-mail-ios-light", "Apple Mail, iOS, light", "Email on Acid (Mailgun Inspect)"],
+  ["apple-mail-ios-dark", "Apple Mail, iOS, dark", "Email on Acid (Mailgun Inspect)"],
+  ["yahoo-mail", "Yahoo Mail", "Email on Acid (Mailgun Inspect)"],
 ];
 
 /** A client leaves PENDING only when its screenshot exists (see email-samples/atelier-oak/TESTING.md). */
@@ -1106,7 +1104,7 @@ does not ensure profits or protect against losses.
       "Concept piece. Atelier & Oak is a fictional brand I invented to show, in one email, how I build for the hard parts of the inbox: Outlook on Windows, dark mode and data that does not always arrive.",
     tags: ["Concept piece", "Hand-coded HTML", "Dark mode", "Outlook / VML", "Liquid"],
     overview: [
-      "There is no client here, no send and no results to report. Atelier & Oak does not exist. I set myself a brief a premium furniture retailer might give, a seasonal collection launch with a hero, a dynamic product grid, a designer story and one call to action, then hand-coded it with no framework and wrote down how I would prove it works. The photography is free-licence stock, credited in the repository. Everything on this page is either the built HTML, a Chromium render of it, or a check anyone can re-run; the email-client tests are listed as pending until I add real screenshots.",
+      "There is no client here, no send and no results to report. Atelier & Oak does not exist. I set myself a brief a premium furniture retailer might give, a seasonal collection launch with a hero, a dynamic product grid, a designer story and one call to action, then hand-coded it with no framework and wrote down how I would prove it works. The photography is free-licence stock, credited in the repository. Everything on this page is the built HTML, a Chromium render of it, a check anyone can re-run, or a real email-client render from Email on Acid.",
     ],
     technicalScope: [],
     sequential: false,
@@ -1128,8 +1126,8 @@ does not ensure profits or protect against losses.
         body: "One script runs doiuse-email against Outlook, Gmail and Apple Mail, verifies that every table is closed in both the Outlook and the standard view, checks every image for width, height and alt, and measures size and contrast. Each caniemail flag that remains is listed with the fallback that covers it.",
       },
       {
-        title: "What is not proven yet",
-        body: "Static checks and a Chromium screenshot are not an inbox. Until the Litmus or Email on Acid runs and the seed sends are done, nothing on this page claims a client pass.",
+        title: "Real-client testing",
+        body: "Static checks and a Chromium screenshot are not an inbox, so the email was also rendered in real clients on Email on Acid (Mailgun Inspect). That run found two Outlook bugs the static checks missed; both were fixed and re-tested before the screenshots below were taken.",
       },
     ],
     code: [
