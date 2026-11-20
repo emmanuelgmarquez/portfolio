@@ -7,6 +7,7 @@ import { ProjectCover, PhoneFrame } from "./project-cover";
 import { LightboxTrigger } from "./lightbox";
 import { Parallax } from "./parallax";
 import { Reveal } from "./reveal";
+import { ConceptBadge } from "./concept-study";
 
 /* ------------------------------------------------------------------ Hero */
 
@@ -30,7 +31,12 @@ export function CaseHero({ project, total }: { project: Project; total: number }
           </p>
         </div>
 
-        <div className="grid gap-8 pb-12 pt-10 sm:pb-16 sm:pt-14 lg:grid-cols-12 lg:gap-10">
+        {project.concept && (
+          <p className="pt-8 sm:pt-10">
+            <ConceptBadge label={`${project.concept.badge}: fictional brand`} />
+          </p>
+        )}
+        <div className={`grid gap-8 pb-12 sm:pb-16 lg:grid-cols-12 lg:gap-10 ${project.concept ? "pt-5 sm:pt-6" : "pt-10 sm:pt-14"}`}>
           <h1
             className={`display lg:col-span-8 ${
               project.title.length > 14 ? "text-[clamp(3rem,8vw,7.25rem)]" : "text-[clamp(3.4rem,11vw,10rem)]"
@@ -77,7 +83,7 @@ export function Overview({ project }: { project: Project }) {
     <section aria-labelledby="overview-title" className="py-20 sm:py-28">
       <div className="shell grid gap-8 lg:grid-cols-12 lg:gap-10">
         <h2 id="overview-title" className="display-tight text-[2rem] sm:text-[2.6rem] lg:col-span-4">
-          Overview
+          {project.concept?.overviewTitle ?? "Overview"}
         </h2>
         <div className="space-y-6 text-lg leading-[1.7] text-ink/85 lg:col-span-7 lg:col-start-6">
           {project.overview.map((p) => (
@@ -86,6 +92,7 @@ export function Overview({ project }: { project: Project }) {
         </div>
       </div>
 
+      {project.technicalScope.length > 0 && (
       <div className="shell mt-20 grid gap-8 sm:mt-28 lg:grid-cols-12 lg:gap-10">
         <h2 className="display-tight text-[2rem] sm:text-[2.6rem] lg:col-span-4">Technical scope</h2>
         <div className="grid gap-x-10 sm:grid-cols-2 lg:col-span-7 lg:col-start-6">
@@ -97,6 +104,7 @@ export function Overview({ project }: { project: Project }) {
           ))}
         </div>
       </div>
+      )}
     </section>
   );
 }
@@ -163,7 +171,7 @@ export function Gallery({ project }: { project: Project }) {
 
 /* ------------------------------------------------------- Full-length view */
 
-function EmailFrame({ image, label, children }: { image: ProjectImage; label: string; children: React.ReactNode }) {
+export function EmailFrame({ image, label, children }: { image: ProjectImage; label: string; children: React.ReactNode }) {
   return (
     <div className="email-shadow overflow-hidden rounded-[8px] border border-ink/10 bg-white">
       <div className="flex items-center justify-between gap-3 border-b border-ink/10 bg-[#f7f7f4] px-4 py-2.5">
@@ -398,7 +406,10 @@ export function NextProject({ project }: { project: Project }) {
         <Link href={`/work/${project.slug}`} className="group block border-t border-ink pt-6">
           <div className="flex items-end justify-between gap-6">
             <div>
-              <p className="text-sm text-muted">Next case study</p>
+              <p className="flex flex-wrap items-center gap-3 text-sm text-muted">
+                Next case study
+                {project.concept && <ConceptBadge label={project.concept.badge} />}
+              </p>
               <p className="display mt-3 text-[clamp(2.75rem,8vw,7rem)] transition-colors duration-300 group-hover:text-signal">
                 {project.title}
               </p>

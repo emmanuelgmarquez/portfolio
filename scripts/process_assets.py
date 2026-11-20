@@ -41,7 +41,17 @@ PHOTO_QUALITY = 86
 TRIM = {"rialto/01-desktop-build", "rialto/02-mobile-build"}
 
 # Photography (lossy) rather than screenshots (lossless).
-PHOTOS = {"rialto/hero-photo": 2000}
+PHOTOS = {
+    "rialto/hero-photo": 2000,
+    # Concept email renders are mostly photography; lossless would be 1.6-2.4MB each.
+    "atelier-oak-concept/01-desktop-light": 1200,
+    "atelier-oak-concept/02-desktop-dark": 1200,
+    "atelier-oak-concept/03-mobile-light": 1125,
+    "atelier-oak-concept/04-mobile-dark": 1125,
+    "atelier-oak-concept/05-state-full": 1200,
+    "atelier-oak-concept/06-state-partial": 1200,
+    "atelier-oak-concept/07-state-empty": 1200,
+}
 
 # Close-up crops: (left, top, right, bottom) in SOURCE pixels. When a source is
 # enlarged, the box is scaled with it.

@@ -1,10 +1,10 @@
 import { Fragment } from "react";
 import type { CodeExcerpt } from "@/data/projects";
 
-/** Minimal HTML/AMPscript highlighter: comments, AMPscript, tags, attribute values. */
+/** Minimal HTML/AMPscript/Liquid highlighter: comments, AMPscript, Liquid, tags, attribute values. */
 export function Highlight({ code }: { code: string }) {
   const parts: React.ReactNode[] = [];
-  const re = /(<!--[\s\S]*?-->)|(%%[\s\S]*?%%)|(<\/?[a-zA-Z:][^>]*>)/g;
+  const re = /(<!--[\s\S]*?-->)|(%%[\s\S]*?%%|\{%[\s\S]*?%\}|\{\{[\s\S]*?\}\})|(<\/?[a-zA-Z:][^>]*>)/g;
   let last = 0;
   let m: RegExpExecArray | null;
   let k = 0;
@@ -35,16 +35,24 @@ export function Highlight({ code }: { code: string }) {
   return <>{parts}</>;
 }
 
-export function CodeExcerpts({ excerpts }: { excerpts: CodeExcerpt[] }) {
+export function CodeExcerpts({
+  excerpts,
+  title = "From the production HTML",
+  intro = "Short excerpts from the shipped emails, with image paths and tracking values shortened.",
+}: {
+  excerpts: CodeExcerpt[];
+  title?: string;
+  intro?: string;
+}) {
   return (
     <section aria-labelledby="code-title" className="bg-night py-20 text-night-ink sm:py-28">
       <div className="shell">
         <div className="grid gap-6 lg:grid-cols-12 lg:gap-10">
           <h2 id="code-title" className="display text-[clamp(2.4rem,5vw,4.5rem)] lg:col-span-7">
-            From the production HTML
+            {title}
           </h2>
           <p className="max-w-[28rem] text-lg leading-relaxed text-night-muted lg:col-span-5 lg:pt-3">
-            Short excerpts from the shipped emails, with image paths and tracking values shortened.
+            {intro}
           </p>
         </div>
         <div className="mt-14 flex flex-col gap-14">

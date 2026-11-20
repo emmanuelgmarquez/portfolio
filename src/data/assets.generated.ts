@@ -28,6 +28,34 @@ export const imageSizes: Record<string, { width: number; height: number }> = {
     "width": 1208,
     "height": 2248
   },
+  "/projects/atelier-oak-concept/01-desktop-light.webp": {
+    "width": 1200,
+    "height": 5792
+  },
+  "/projects/atelier-oak-concept/02-desktop-dark.webp": {
+    "width": 1200,
+    "height": 5792
+  },
+  "/projects/atelier-oak-concept/03-mobile-light.webp": {
+    "width": 1125,
+    "height": 12171
+  },
+  "/projects/atelier-oak-concept/04-mobile-dark.webp": {
+    "width": 1125,
+    "height": 12171
+  },
+  "/projects/atelier-oak-concept/05-state-full.webp": {
+    "width": 1200,
+    "height": 2688
+  },
+  "/projects/atelier-oak-concept/06-state-partial.webp": {
+    "width": 1200,
+    "height": 2688
+  },
+  "/projects/atelier-oak-concept/07-state-empty.webp": {
+    "width": 1200,
+    "height": 724
+  },
   "/projects/car-t-talk/01-registration-scheduling.webp": {
     "width": 974,
     "height": 2250

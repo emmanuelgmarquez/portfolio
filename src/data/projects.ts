@@ -50,12 +50,43 @@ export type Project = {
   technologies: string[];
   theme: { panel: string; panelInk: "light" | "dark" };
   seoDescription: string;
+  /** Self-initiated concept work for a fictional brand. Adds the concept sections and the "Concept piece" badge. */
+  concept?: ConceptStudy;
+};
+
+export type ClientTest = {
+  /** Screenshot file name: assets-source/<slug>/client-<id>.png */
+  id: string;
+  name: string;
+  group: "Litmus or Email on Acid" | "Seed send";
+  /** Present only when the owner has added a real screenshot. Without it the client shows as PENDING. */
+  image?: ProjectImage;
+};
+
+export type ConceptStudy = {
+  badge: string;
+  /** Section headings for the reused Overview and code-excerpt sections. */
+  overviewTitle: string;
+  codeTitle: string;
+  codeIntro: string;
+  liveUrl: string;
+  plainTextUrl: string;
+  screens: { desktopLight: ProjectImage; desktopDark: ProjectImage; mobileLight: ProjectImage; mobileDark: ProjectImage };
+  build: { title: string; points: string[] }[];
+  states: { image: ProjectImage; title: string; body: string }[];
+  review: { intro: string; rows: { issue: string; before: string; after: string }[] };
+  clientTests: ClientTest[];
 };
 
 function img(src: string, title: string, alt: string, caption?: string): ProjectImage {
   const size = imageSizes[src];
   if (!size) throw new Error(`Missing image in manifest: ${src}. Run npm run assets.`);
   return { src, title, alt, caption, ...size };
+}
+
+/** An image the owner may add later (client test screenshots). Undefined until it is in the manifest. */
+function optionalImg(src: string, title: string, alt: string): ProjectImage | undefined {
+  return imageSizes[src] ? img(src, title, alt) : undefined;
 }
 
 /* ---------------------------------------------------------------- CAR-T TALK */
@@ -215,6 +246,84 @@ const rialto = {
   ),
 };
 
+
+/* ------------------------------------------------ ATELIER & OAK (concept) */
+// Fictional brand. Chromium renders from email-samples/atelier-oak/scripts/screenshot.mjs.
+
+const atelier = {
+  desktopLight: img(
+    "/projects/atelier-oak-concept/01-desktop-light.webp",
+    "Desktop, light",
+    "Atelier & Oak concept email at 600px in light mode: wordmark, a hero photograph of a leather sofa in low sun with the live-text headline The Hearth Collection on a cream card, intro copy, a two-by-two product grid, an Explore the collection button, a workshop story block and the footer.",
+    "600px, light. Chromium render of the built HTML.",
+  ),
+  desktopDark: img(
+    "/projects/atelier-oak-concept/02-desktop-dark.webp",
+    "Desktop, dark",
+    "The same Atelier & Oak concept email at 600px in dark mode: light wordmark on an off-black ground, a dark hero card with off-white headline, off-white body text and a light button.",
+    "600px, prefers-color-scheme: dark. The logo and hero card are swapped for their dark versions.",
+  ),
+  mobileLight: img(
+    "/projects/atelier-oak-concept/03-mobile-light.webp",
+    "Mobile, light",
+    "Atelier & Oak concept email at 375px in light mode, with the product grid stacked into a single column and a full-width button.",
+    "375px, light. The grid stacks to one column.",
+  ),
+  mobileDark: img(
+    "/projects/atelier-oak-concept/04-mobile-dark.webp",
+    "Mobile, dark",
+    "Atelier & Oak concept email at 375px in dark mode, single column, with the dark logo and dark hero card.",
+    "375px, prefers-color-scheme: dark.",
+  ),
+  stateFull: img(
+    "/projects/atelier-oak-concept/05-state-full.webp",
+    "Data state: full",
+    "Product grid rendered with full data: greeting Hi Maya, four products with photographs, one showing a Now and Was sale price.",
+  ),
+  statePartial: img(
+    "/projects/atelier-oak-concept/06-state-partial.webp",
+    "Data state: partial",
+    "Product grid rendered with partial data: greeting Hi there, and the third product showing a monogram fallback tile in place of a missing photograph.",
+  ),
+  stateEmpty: img(
+    "/projects/atelier-oak-concept/07-state-empty.webp",
+    "Data state: empty",
+    "The email rendered with an empty product list: the intro copy is followed directly by the button, with no grid heading and no gap.",
+  ),
+};
+
+const atelierClients: [string, string, ClientTest["group"]][] = [
+  ["outlook-2016-windows", "Outlook 2016, Windows", "Litmus or Email on Acid"],
+  ["outlook-2019-windows", "Outlook 2019, Windows", "Litmus or Email on Acid"],
+  ["outlook-365-windows", "Outlook 365, Windows", "Litmus or Email on Acid"],
+  ["outlook-new-windows", "New Outlook, Windows", "Litmus or Email on Acid"],
+  ["outlook-com-light", "Outlook.com, light", "Litmus or Email on Acid"],
+  ["outlook-com-dark", "Outlook.com, dark", "Litmus or Email on Acid"],
+  ["gmail-web", "Gmail, web", "Litmus or Email on Acid"],
+  ["gmail-ios", "Gmail app, iOS", "Litmus or Email on Acid"],
+  ["gmail-android", "Gmail app, Android", "Litmus or Email on Acid"],
+  ["apple-mail-macos-light", "Apple Mail, macOS, light", "Litmus or Email on Acid"],
+  ["apple-mail-macos-dark", "Apple Mail, macOS, dark", "Litmus or Email on Acid"],
+  ["apple-mail-ios-light", "Apple Mail, iOS, light", "Litmus or Email on Acid"],
+  ["apple-mail-ios-dark", "Apple Mail, iOS, dark", "Litmus or Email on Acid"],
+  ["samsung-mail", "Samsung Mail", "Litmus or Email on Acid"],
+  ["yahoo-mail", "Yahoo Mail", "Litmus or Email on Acid"],
+  ["seed-gmail", "Gmail inbox", "Seed send"],
+  ["seed-outlook-com", "Outlook.com inbox", "Seed send"],
+  ["seed-iphone", "iPhone", "Seed send"],
+];
+
+/** A client leaves PENDING only when its screenshot exists (see email-samples/atelier-oak/TESTING.md). */
+const atelierClientTests: ClientTest[] = atelierClients.map(([id, name, group]) => ({
+  id,
+  name,
+  group,
+  image: optionalImg(
+    `/projects/atelier-oak-concept/client-${id}.webp`,
+    `${name} test`,
+    `Screenshot of the Atelier & Oak concept email in ${name}.`,
+  ),
+}));
 
 /* --------------------------------------------------------- BANK OF AMERICA */
 // Renders come from bofa-render/render.sh and are processed by scripts/process_bofa.py.
@@ -981,10 +1090,245 @@ does not ensure profits or protect against losses.
     seoDescription:
       "Patient mentor program emails for OFEV, FIRDAPSE/LEMS Connection, ALUNBRIG and DUPIXENT: confirmations, reminders, event invitations and follow-ups built from shared, compliant modules.",
   },
+  {
+    slug: "atelier-oak-concept",
+    number: "07",
+    title: "Atelier & Oak",
+    client: "Atelier & Oak (fictional)",
+    clientLabel: "Brand",
+    industry: "Furniture / Retail",
+    category: "Concept email: design, development & testing",
+    discipline: "Design, HTML development and QA",
+    scope: "Concept piece: one collection-launch email",
+    summary:
+      "A concept piece for a fictional furniture brand: one collection-launch email, hand-coded for Outlook, dark mode and dynamic content, with its checks and test plan in the open.",
+    intro:
+      "Concept piece. Atelier & Oak is a fictional brand I invented to show, in one email, how I build for the hard parts of the inbox: Outlook on Windows, dark mode and data that does not always arrive.",
+    tags: ["Concept piece", "Hand-coded HTML", "Dark mode", "Outlook / VML", "Liquid"],
+    overview: [
+      "There is no client here, no send and no results to report. Atelier & Oak does not exist. I set myself a brief a premium furniture retailer might give, a seasonal collection launch with a hero, a dynamic product grid, a designer story and one call to action, then hand-coded it with no framework and wrote down how I would prove it works. The photography is free-licence stock, credited in the repository. Everything on this page is either the built HTML, a Chromium render of it, or a check anyone can re-run; the email-client tests are listed as pending until I add real screenshots.",
+    ],
+    technicalScope: [],
+    sequential: false,
+    galleryTitle: "",
+    galleryIntro: "",
+    gallery: [],
+    details: [],
+    considerations: [
+      {
+        title: "Accessibility",
+        body: "A lang attribute, one h1 with h2 and h3 below it inside the layout tables, role=\"presentation\" on every table, 14px minimum text and alt text on every image. Contrast is computed, not eyeballed: the lowest text pair is 5.55:1 in light mode and 8.05:1 in dark, against the 4.5:1 AA threshold.",
+      },
+      {
+        title: "Weight",
+        body: "The full-data HTML is 27.1 KB, about a quarter of the 102 KB point where Gmail clips a message. Photographs are JPEGs exported at 2x, the largest 118 KB.",
+      },
+      {
+        title: "Automated checks",
+        body: "One script runs doiuse-email against Outlook, Gmail and Apple Mail, verifies that every table is closed in both the Outlook and the standard view, checks every image for width, height and alt, and measures size and contrast. Each caniemail flag that remains is listed with the fallback that covers it.",
+      },
+      {
+        title: "What is not proven yet",
+        body: "Static checks and a Chromium screenshot are not an inbox. Until the Litmus or Email on Acid runs and the seed sends are done, nothing on this page claims a client pass.",
+      },
+    ],
+    code: [
+      {
+        title: "A grid that stacks without a media query",
+        body: "Each product is an inline-block column with a max-width, so two fit at 600px and one fits on a phone. Outlook gets a ghost table that pins each column at 288px. Liquid supplies the defaults, the image fallback and the empty-state guard.",
+        code: `{% if products and products.size > 0 %}
+<td align="center" style="font-size:0; text-align:center;">
+  <!--[if mso]>
+  <table role="presentation" width="576"><tr>
+  <![endif]-->
+  {% for product in products limit:4 %}
+  <!--[if mso]><td width="288" valign="top"><![endif]-->
+  <div class="col" style="display:inline-block; width:100%;
+       max-width:288px; vertical-align:top;">
+    <img src="{{ product.image_url | default: fallback_image }}"
+         width="264" height="323"
+         alt="{{ product.image_alt | default: product_name }}"
+         style="display:block; width:264px; height:323px; border:0;">
+    {% if product.sale_price %}
+      Now {{ product.sale_price }} <span>Was {{ product.price }}</span>
+    {% else %}
+      {{ product.price | default: "Price on request" }}
+    {% endif %}
+  </div>
+  <!--[if mso]></td><![endif]-->
+  {% endfor %}
+  <!--[if mso]></tr></table><![endif]-->
+</td>
+{% endif %}`,
+      },
+      {
+        title: "A hero photograph Outlook can draw",
+        body: "Everyone else reads the CSS background. Outlook on Windows ignores it, so a VML rectangle paints the same photograph, with a solid colour behind it for when images are off. The headline stays live text in both.",
+        code: `<td background="hero-autumn-light.jpg" bgcolor="#2A2118" height="480"
+    style="background-image:url('hero-autumn-light.jpg');
+           background-size:cover; background-color:#2A2118;">
+  <!--[if mso]>
+  <v:rect fill="true" stroke="false" style="width:600px; height:480px;">
+  <v:fill type="frame" src="hero-autumn-light.jpg" color="#2A2118" />
+  <v:textbox inset="0,0,0,0">
+  <![endif]-->
+
+  <h1 style="font-family:'Cormorant Garamond', Georgia, serif;">
+    The Hearth Collection
+  </h1>
+
+  <!--[if mso]></v:textbox></v:rect><![endif]-->
+</td>`,
+      },
+      {
+        title: "Container swapping for dark mode",
+        body: "Recolouring is not enough for a logo or a card over a photograph, so there are two builds of each. The light one shows by default. The dark one is hidden, kept away from Outlook on Windows entirely, and swapped in by the dark-mode rules.",
+        code: `<img class="swap-light" src="logo-light.png" width="208" height="32"
+     alt="Atelier &amp; Oak" style="display:block;">
+<!--[if !mso]><!-->
+<img class="swap-dark" src="logo-dark.png" width="208" height="32"
+     alt="Atelier &amp; Oak"
+     style="display:none; max-height:0; overflow:hidden; mso-hide:all;">
+<!--<![endif]-->
+
+<!-- In the head -->
+@media (prefers-color-scheme: dark) {
+  .swap-light { display: none !important; }
+  .swap-dark  { display: block !important; max-height: none !important; }
+}
+[data-ogsc] .swap-light { display: none !important; }
+[data-ogsc] .swap-dark  { display: block !important; max-height: none !important; }`,
+      },
+    ],
+    technologies: [
+      "Hand-coded HTML/CSS",
+      "Hybrid fluid layout",
+      "MSO ghost tables",
+      "VML backgrounds and buttons",
+      "Dark mode (prefers-color-scheme, data-ogsc)",
+      "Container swapping",
+      "Liquid (liquidjs)",
+      "CSS inlining (juice)",
+      "doiuse-email",
+      "Playwright",
+      "Nodemailer",
+      "WCAG AA contrast",
+    ],
+    theme: { panel: "#DDD5C8", panelInk: "dark" },
+    seoDescription:
+      "Concept piece: a hand-coded collection-launch email for the fictional furniture brand Atelier & Oak, built for Outlook, dark mode and dynamic Liquid content, with automated checks and a client test plan.",
+    concept: {
+      badge: "Concept piece",
+      overviewTitle: "Concept piece",
+      codeTitle: "From the email source",
+      codeIntro: "Short excerpts from the hand-coded template, with image paths shortened.",
+      liveUrl: "/email-samples/atelier-oak/index.html",
+      plainTextUrl: "/email-samples/atelier-oak/plain.txt",
+      screens: {
+        desktopLight: atelier.desktopLight,
+        desktopDark: atelier.desktopDark,
+        mobileLight: atelier.mobileLight,
+        mobileDark: atelier.mobileDark,
+      },
+      build: [
+        {
+          title: "Outlook on Windows",
+          points: [
+            "Ghost tables inside MSO conditional comments pin the 600px container and each 288px product column, because Word's rendering engine ignores max-width and inline-block.",
+            "VML draws what CSS cannot there: the hero photograph (v:rect and v:fill, with a solid fallback colour) and the button (v:roundrect).",
+            "The OfficeDocumentSettings block sets PixelsPerInch to 96, so Windows display scaling at 120 DPI does not enlarge the images out of their cells.",
+          ],
+        },
+        {
+          title: "Dark mode",
+          points: [
+            "Clients behave in three ways: some leave the email alone, some partially invert (light backgrounds go dark, dark ones stay), and some fully invert everything. The build is written for all three.",
+            "Apple Mail gets its own palette through prefers-color-scheme; Outlook.com gets the same through [data-ogsc] and [data-ogsb] selectors. Colours are off-white and off-black, never pure white or black.",
+            "Container swapping: the logo and the hero card each exist in a light and a dark build. Light shows by default, dark swaps in, and Outlook on Windows never receives the dark ones. The wordmark is a transparent PNG with a faint stroke so it stays legible if a client inverts around it.",
+          ],
+        },
+        {
+          title: "Fonts and fallbacks",
+          points: [
+            "Cormorant Garamond loads through both @import and @font-face for the clients that support web fonts.",
+            "Every text element carries a full stack, Georgia for headings and Arial for body, and an MSO-only style block forces those in Outlook so nothing falls back to Times New Roman.",
+            "Line heights are in pixels with mso-line-height-rule: exactly. Headline, prices and button are live text, not images.",
+          ],
+        },
+        {
+          title: "Dynamic product grid",
+          points: [
+            "Generic Liquid, rendered locally with liquidjs: a loop limited to four products, with sale and regular price logic.",
+            "Every variable has a default, down to the greeting: {{ first_name | default: \"there\" }}.",
+            "A product with no image gets a fallback tile, and an empty product list removes the whole module, heading included. The three rendered data states are below.",
+          ],
+        },
+      ],
+      states: [
+        {
+          image: atelier.stateFull,
+          title: "Full data",
+          body: "First name, four products, one on sale. The sale item reads Now and Was in words, not just colour.",
+        },
+        {
+          image: atelier.statePartial,
+          title: "Partial data",
+          body: "No first name, so the greeting falls back to “Hi there”. The third product has no image, so it gets the fallback tile and its name as alt text.",
+        },
+        {
+          image: atelier.stateEmpty,
+          title: "Empty products",
+          body: "The product list is empty, so the grid and its heading are not rendered at all. The intro runs straight into the button.",
+        },
+      ],
+      review: {
+        intro:
+          "I asked an AI assistant for a quick first draft of the product grid and saved it untouched. It looks right in a browser and would break in an inbox. I audited it against my email standards checklist and rebuilt it. These are some of the issues that were in that draft; the full audit and the draft itself are in the repository.",
+        rows: [
+          {
+            issue: "Layout",
+            before: "display: flex, gap and calc() for the 2x2 grid.",
+            after: "Inline-block columns with a max-width that stack without a media query.",
+          },
+          {
+            issue: "Outlook",
+            before: "No MSO conditional comments anywhere.",
+            after: "A ghost table with a 288px cell around each column.",
+          },
+          {
+            issue: "Tables",
+            before: "No role=\"presentation\"; a <tr> and a <td> left unclosed in the price table.",
+            after: "Role and resets on every table; nesting verified by script in both the Outlook and standard views.",
+          },
+          {
+            issue: "Images",
+            before: "<img> with no alt, width, height, display:block or border:0.",
+            after: "Width and height as attributes and in CSS, display:block, border:0, alt text with a fallback.",
+          },
+          {
+            issue: "CSS",
+            before: "font shorthand in rem, margins for spacing, everything in a <style> block.",
+            after: "Longhand px values with mso-line-height-rule, padding on cells, base styles inlined at build.",
+          },
+          {
+            issue: "Colour",
+            before: "Pure #fff and #000; 12px #999 text at 2.85:1; no dark mode.",
+            after: "Off-white and off-black; 14px text at 6.84:1; prefers-color-scheme and [data-ogsc] rules.",
+          },
+          {
+            issue: "Data",
+            before: "No defaults, no limit, no image fallback, no empty state.",
+            after: "Defaults on every variable, limit:4, fallback image, module removed when the list is empty.",
+          },
+        ],
+      },
+      clientTests: atelierClientTests,
+    },
+  },
 ];
 
 /** Display order is the array order; numbering follows it automatically. */
-const order = ["bank-of-america", "three-insurance", "car-t-talk", "apokyn", "rialto", "patient-programs"];
+const order = ["bank-of-america", "three-insurance", "car-t-talk", "apokyn", "rialto", "patient-programs", "atelier-oak-concept"];
 export const projects: Project[] = [...projectList]
   .sort((a, b) => order.indexOf(a.slug) - order.indexOf(b.slug))
   .map((p, i) => ({ ...p, number: String(i + 1).padStart(2, "0") }));
@@ -995,6 +1339,7 @@ export const threeAssets = three;
 export const apokynAssets = apokyn;
 export const patientAssets = pp;
 export const bofaAssets = bofa;
+export const atelierAssets = atelier;
 
 export function getProject(slug: string) {
   return projects.find((p) => p.slug === slug);

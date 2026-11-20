@@ -3,6 +3,7 @@ import { ArrowUpRight } from "lucide-react";
 import { projects, type Project } from "@/data/projects";
 import { ProjectCover } from "./project-cover";
 import { Reveal } from "./reveal";
+import { ConceptBadge } from "./concept-study";
 
 export function FeaturedWork() {
   const [first, second, ...rest] = projects;
@@ -88,13 +89,16 @@ function CaseLink() {
 function FeatureRow({ project }: { project: Project }) {
   return (
     <article>
-      <Link href={`/work/${project.slug}`} className="group block" aria-label={`${project.title}: view case study`}>
+      <Link href={`/work/${project.slug}`} className="group block" aria-label={`${project.title}${project.concept ? ` (${project.concept.badge.toLowerCase()})` : ""}: view case study`}>
         <Reveal>
           <ProjectCover project={project} variant="feature" />
         </Reveal>
         <div className="mt-8 grid gap-8 lg:grid-cols-12 lg:gap-10">
           <div className="lg:col-span-5">
-            <p className="text-sm tabular-nums text-muted">{project.number}</p>
+            <p className="flex flex-wrap items-center gap-3 text-sm tabular-nums text-muted">
+              {project.number}
+              {project.concept && <ConceptBadge label={project.concept.badge} />}
+            </p>
             <h3 className="display mt-2 text-[clamp(2.5rem,5.4vw,4.75rem)] transition-colors duration-300 group-hover:text-signal">
               {project.title}
             </h3>
@@ -116,13 +120,16 @@ function FeatureRow({ project }: { project: Project }) {
 function PairCard({ project }: { project: Project }) {
   return (
     <article>
-      <Link href={`/work/${project.slug}`} className="group block" aria-label={`${project.title}: view case study`}>
+      <Link href={`/work/${project.slug}`} className="group block" aria-label={`${project.title}${project.concept ? ` (${project.concept.badge.toLowerCase()})` : ""}: view case study`}>
         <Reveal>
           <ProjectCover project={project} variant="pair" />
         </Reveal>
         <div className="mt-8 flex flex-col gap-6">
           <div>
-            <p className="text-sm tabular-nums text-muted">{project.number}</p>
+            <p className="flex flex-wrap items-center gap-3 text-sm tabular-nums text-muted">
+              {project.number}
+              {project.concept && <ConceptBadge label={project.concept.badge} />}
+            </p>
             <h3 className="display mt-2 text-[clamp(2.5rem,4.6vw,4.25rem)] transition-colors duration-300 group-hover:text-signal">
               {project.title}
             </h3>
