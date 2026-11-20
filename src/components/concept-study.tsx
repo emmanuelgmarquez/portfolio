@@ -264,7 +264,7 @@ export function ClientTests({ concept }: { concept: ConceptStudy }) {
               {done === 0
                 ? "Not yet. This is the test plan, and every client on it is pending. A client is marked tested only when its real screenshot is added here; the automated checks and Chromium renders above do not count."
                 : done === tests.length
-                  ? "Real renders from Email on Acid (Mailgun Inspect), not emulations. The first run caught two Outlook bugs, the button label going dark in Outlook's dark mode and the layout stretching to 648px in classic Outlook, both fixed before these screenshots were taken. Select any client to see the full render."
+                  ? "Real renders from Email on Acid (Mailgun Inspect), not emulations. Testing caught four Outlook bugs: the button label going dark in dark mode, the layout stretching to 648px, headings falling back to Calibri in Outlook 2019 and later, and the logo fading in dark mode. All were fixed and re-tested before these screenshots were taken. Select any client to see the full render."
                   : "A client is marked tested only when its real screenshot is shown here. The rest are still pending."}
             </p>
             <p className="mt-4 text-sm tabular-nums text-muted">
@@ -305,6 +305,7 @@ export function ClientTests({ concept }: { concept: ConceptStudy }) {
                     )}
                     <p className="mt-3 text-sm leading-snug text-ink">{t.name}</p>
                     <p className="mt-0.5 text-xs uppercase tracking-[0.12em] text-muted">{t.image ? "Tested" : "Pending"}</p>
+                    {t.note && <p className="mt-1 text-xs leading-snug text-muted">{t.note}</p>}
                   </li>
                 ))}
             </ul>

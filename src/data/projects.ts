@@ -59,6 +59,8 @@ export type ClientTest = {
   id: string;
   name: string;
   group: "Email on Acid (Mailgun Inspect)" | "Seed send";
+  /** Optional one-line note shown under the client name. */
+  note?: string;
   /** Present only when the owner has added a real screenshot. Without it the client shows as PENDING. */
   image?: ProjectImage;
 };
@@ -292,15 +294,15 @@ const atelier = {
   ),
 };
 
-const atelierClients: [string, string, ClientTest["group"]][] = [
+const atelierClients: [string, string, ClientTest["group"], string?][] = [
   ["outlook-2016-windows", "Outlook 2016, Windows", "Email on Acid (Mailgun Inspect)"],
   ["outlook-2016-windows-125", "Outlook 2016, Windows, 125% scaling", "Email on Acid (Mailgun Inspect)"],
   ["outlook-2019-windows", "Outlook 2019, Windows", "Email on Acid (Mailgun Inspect)"],
   ["outlook-365-windows", "Outlook 365, Windows", "Email on Acid (Mailgun Inspect)"],
   ["outlook-2024-windows-dark", "Outlook 2024, Windows, dark", "Email on Acid (Mailgun Inspect)"],
-  ["outlook-new-windows", "New Outlook, Windows", "Email on Acid (Mailgun Inspect)"],
-  ["outlook-com-light", "Outlook.com, light", "Email on Acid (Mailgun Inspect)"],
-  ["outlook-com-dark", "Outlook.com, dark", "Email on Acid (Mailgun Inspect)"],
+  ["outlook-m365-windows-11", "Microsoft 365, Windows 11", "Email on Acid (Mailgun Inspect)"],
+  ["outlook-com-light", "Outlook.com, light", "Email on Acid (Mailgun Inspect)", "Reading pane under 600px, so the grid stacks by design."],
+  ["outlook-com-dark", "Outlook.com, dark", "Email on Acid (Mailgun Inspect)", "Reading pane under 600px, so the grid stacks by design."],
   ["gmail-web", "Gmail, web", "Email on Acid (Mailgun Inspect)"],
   ["gmail-ios", "Gmail app, iOS", "Email on Acid (Mailgun Inspect)"],
   ["gmail-android", "Gmail app, Android", "Email on Acid (Mailgun Inspect)"],
@@ -312,10 +314,11 @@ const atelierClients: [string, string, ClientTest["group"]][] = [
 ];
 
 /** A client leaves PENDING only when its screenshot exists (see email-samples/atelier-oak/TESTING.md). */
-const atelierClientTests: ClientTest[] = atelierClients.map(([id, name, group]) => ({
+const atelierClientTests: ClientTest[] = atelierClients.map(([id, name, group, note]) => ({
   id,
   name,
   group,
+  note,
   image: optionalImg(
     `/projects/atelier-oak-concept/client-${id}.webp`,
     `${name} test`,
@@ -1127,7 +1130,7 @@ does not ensure profits or protect against losses.
       },
       {
         title: "Real-client testing",
-        body: "Static checks and a Chromium screenshot are not an inbox, so the email was also rendered in real clients on Email on Acid (Mailgun Inspect). That run found two Outlook bugs the static checks missed; both were fixed and re-tested before the screenshots below were taken.",
+        body: "Static checks and a Chromium screenshot are not an inbox, so the email was also rendered in real clients on Email on Acid (Mailgun Inspect). Those runs found four Outlook rendering bugs the static checks missed; all four were fixed and re-tested on every client before the screenshots below were taken.",
       },
     ],
     code: [

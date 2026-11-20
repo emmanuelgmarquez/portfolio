@@ -7,14 +7,22 @@ case study page are real client renders from that run, filed as `assets-source/a
 Samsung Mail is not in Mailgun Inspect's client list, so it was replaced on the page by Outlook 2016 at 125%
 scaling and Outlook 2024 dark mode. The seed sends in section 2 have not been done.
 
-The first run found two Outlook bugs that the automated checks did not:
+Testing found four Outlook bugs that the automated checks did not:
 
 1. **Outlook 2024, Windows, dark mode:** the VML button label turned dark on the dark button. Fixed with
    `mso-color-alt:auto` on the label.
 2. **Classic Outlook (2016, 2019, 365, 2024):** the whole email rendered at 648px. The hero cell's 24px padding
    was added around the 600px VML rect. Fixed with `mso-padding-alt:0` on the hero cell and a 552px inner cell.
 
-Both were re-tested on all clients before the screenshots were taken.
+3. **Outlook 2019, 365, Microsoft 365 and 2024:** headings fell back to Calibri. These versions read the first family of
+   the inline stack (the web font), miss it and ignore the MSO Georgia rule. Fixed by starting the inline stack with
+   Georgia and adding Cormorant Garamond in a head rule hidden from Outlook.
+4. **Outlook 2024, dark mode:** the dark logo sat on a darkened logo bar, so only its outline showed. Fixed with a
+   solid light VML band behind the logo in Outlook.
+
+All four were re-tested on every client before the screenshots were taken (final run: build 7ead8ca). New Outlook for
+Windows did not render in the final run, so the page shows Microsoft 365 on Windows 11 in its place. Outlook.com is
+shown from the Edge capture because the Chrome capture had a Microsoft Rewards popup over the email.
 
 ## 0. Before you test: the images have to be online
 

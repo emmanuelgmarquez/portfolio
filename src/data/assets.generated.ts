@@ -110,11 +110,11 @@ export const imageSizes: Record<string, { width: number; height: number }> = {
   },
   "/projects/atelier-oak-concept/client-outlook-com-light.webp": {
     "width": 1000,
-    "height": 2879
+    "height": 2915
   },
-  "/projects/atelier-oak-concept/client-outlook-new-windows.webp": {
+  "/projects/atelier-oak-concept/client-outlook-m365-windows-11.webp": {
     "width": 1000,
-    "height": 2909
+    "height": 2873
   },
   "/projects/atelier-oak-concept/client-yahoo-mail.webp": {
     "width": 1000,
