@@ -74,11 +74,11 @@ export const imageSizes: Record<string, { width: number; height: number }> = {
   },
   "/projects/atelier-oak-concept/client-gmail-android.webp": {
     "width": 1000,
-    "height": 11178
+    "height": 11179
   },
   "/projects/atelier-oak-concept/client-gmail-ios.webp": {
     "width": 1000,
-    "height": 10517
+    "height": 10319
   },
   "/projects/atelier-oak-concept/client-gmail-web.webp": {
     "width": 1000,
@@ -110,7 +110,7 @@ export const imageSizes: Record<string, { width: number; height: number }> = {
   },
   "/projects/atelier-oak-concept/client-outlook-com-light.webp": {
     "width": 1000,
-    "height": 2915
+    "height": 2892
   },
   "/projects/atelier-oak-concept/client-outlook-m365-windows-11.webp": {
     "width": 1000,

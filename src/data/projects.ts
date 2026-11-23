@@ -1130,7 +1130,7 @@ does not ensure profits or protect against losses.
       },
       {
         title: "Real-client testing",
-        body: "Static checks and a Chromium screenshot are not an inbox, so the email was also rendered in real clients on Email on Acid (Mailgun Inspect). Those runs found four Outlook rendering bugs the static checks missed; all four were fixed and re-tested on every client before the screenshots below were taken.",
+        body: "Static checks and a Chromium screenshot are not an inbox, so the email was also rendered in real clients on Email on Acid (Mailgun Inspect). Those runs found five Outlook rendering bugs the static checks missed; all five were fixed and re-tested on every client before the screenshots below were taken.",
       },
     ],
     code: [

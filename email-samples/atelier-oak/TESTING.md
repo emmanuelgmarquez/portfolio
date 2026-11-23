@@ -2,12 +2,13 @@
 
 **Concept piece.** Atelier & Oak is a fictional brand.
 
-**Status (20 Nov 2026): tested on Email on Acid (Mailgun Inspect), all 103 clients.** The screenshots on the
-case study page are real client renders from that run, filed as `assets-source/atelier-oak-concept/client-<id>.jpg`.
+**Status (23 Nov 2026): tested on Email on Acid (Mailgun Inspect), all clients, final run on build 34ddc65.** The
+screenshots on the case study page are real client renders from that run, filed as
+`assets-source/atelier-oak-concept/client-<id>.jpg`.
 Samsung Mail is not in Mailgun Inspect's client list, so it was replaced on the page by Outlook 2016 at 125%
 scaling and Outlook 2024 dark mode. The seed sends in section 2 have not been done.
 
-Testing found four Outlook bugs that the automated checks did not:
+Testing found five Outlook bugs that the automated checks did not:
 
 1. **Outlook 2024, Windows, dark mode:** the VML button label turned dark on the dark button. Fixed with
    `mso-color-alt:auto` on the label.
@@ -20,9 +21,17 @@ Testing found four Outlook bugs that the automated checks did not:
 4. **Outlook 2024, dark mode:** the dark logo sat on a darkened logo bar, so only its outline showed. Fixed with a
    solid light VML band behind the logo in Outlook.
 
-All four were re-tested on every client before the screenshots were taken (final run: build 7ead8ca). New Outlook for
-Windows did not render in the final run, so the page shows Microsoft 365 on Windows 11 in its place. Outlook.com is
-shown from the Edge capture because the Chrome capture had a Microsoft Rewards popup over the email.
+5. **Outlook 2016, Windows, 125% display scaling:** the logo sat about 75px right of centre. Outlook scales the VML
+   band to 750px but kept the fixed 600px table inside it. Fixed by making the logo table inside the band 100% wide
+   (build 34ddc65). In the final run the logo and the band share the same centre.
+
+All five were re-tested on every client before the screenshots were taken (final run: build 34ddc65). New Outlook for
+Windows did not render, so the page shows Microsoft 365 on Windows 11 in its place. Outlook.com light is shown from
+the Firefox capture because the Chrome and Edge captures had a Microsoft Rewards popup over the email.
+
+For a test before the branch is deployed, point the image base at
+`https://raw.githubusercontent.com/emmanuelgmarquez/portfolio/<commit>/public/email-samples/atelier-oak/images`
+(see section 0). Vercel preview URLs can show as broken images in testing tools.
 
 ## 0. Before you test: the images have to be online
 
