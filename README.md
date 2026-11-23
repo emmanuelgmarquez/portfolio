@@ -6,6 +6,11 @@ The portfolio site for Emmanuel G. Marquez, Email, CRM & Marketing Technology Sp
 - Recognition: FCS Portfolio Awards (Gold, Silver, Bronze) for Bank of America email, with links to the official winners lists
 - Case studies: `/work/bank-of-america`, `/work/three-insurance`, `/work/car-t-talk`, `/work/apokyn`, `/work/rialto`, `/work/patient-programs`
   (`/work/resortstay-connect` permanently redirects to `/work/rialto`)
+- Concept piece: `/work/atelier-oak-concept`, a hand-coded email for the fictional brand Atelier & Oak, badged
+  "Concept piece" wherever it appears. Source, build, checks and test plan are in `email-samples/atelier-oak/`
+  (see its README); the built email is served at `/email-samples/atelier-oak/index.html`. The checklist it is
+  reviewed against is `EMAIL_STANDARDS.md`. Its email-client tests are pending until real screenshots are added
+  (`email-samples/atelier-oak/TESTING.md`).
 - Full-screen image viewer: zoom, keyboard (← → + − 0 Esc), touch swipe, scrollable tall emails, full-resolution originals
 
 ## Stack
@@ -39,12 +44,15 @@ npm start          # serve the production build
 npm run lint       # ESLint (flat config)
 npm run typecheck  # TypeScript, no emit
 npm run assets     # regenerate public/projects/* from assets-source/*
+npm run email      # rebuild, check and screenshot the concept email (run npm install in email-samples/atelier-oak first)
 ```
 
 ## Project structure
 
 ```
 assets-source/            Original screenshots/renders for each project (not served)
+email-samples/atelier-oak/ Concept email: Liquid source, build/check/screenshot scripts, review, credits (not served)
+public/email-samples/     The built concept email, served as plain HTML with its images
 public/projects/<slug>/   Web-ready WebP images + details/ close-up crops (generated)
 public/og/                Social sharing images (1200×630)
 scripts/process_assets.py Image pipeline: converts, trims, crops close-ups, writes sizes

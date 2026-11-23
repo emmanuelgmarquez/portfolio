@@ -1,6 +1,6 @@
 import Image from "next/image";
 import type { Project, ProjectImage } from "@/data/projects";
-import { apokynAssets, bofaAssets, cartAssets, patientAssets, rialtoAssets, threeAssets } from "@/data/projects";
+import { apokynAssets, atelierAssets, bofaAssets, cartAssets, patientAssets, rialtoAssets, threeAssets } from "@/data/projects";
 import { Highlight } from "./code-excerpts";
 
 type Variant = "feature" | "pair" | "hero";
@@ -263,6 +263,38 @@ export function ProjectCover({
           sizes={wide ? "(min-width: 1024px) 22vw, (min-width: 640px) 26vw, 42vw" : "(min-width: 1024px) 20vw, 42vw"}
         />
         <PanelFade color={panel} />
+      </div>
+    );
+  }
+
+  if (project.slug === "atelier-oak-concept") {
+    // Concept piece: light and dark builds side by side, always labelled as a concept.
+    const wide = variant !== "pair";
+    const order = wide
+      ? [atelierAssets.desktopLight, atelierAssets.mobileDark, atelierAssets.desktopDark, atelierAssets.mobileLight]
+      : [atelierAssets.desktopLight, atelierAssets.desktopDark, atelierAssets.mobileLight];
+    const offsets = ["9%", "17%", "5%", "13%"];
+    return (
+      <div className={base} style={{ background: panel }}>
+        <div className={`absolute inset-0 flex gap-[3%] ${wide ? "px-[8%] lg:px-[16%]" : "px-[8%]"}`}>
+          {order.map((im, i) => (
+            <Sheet
+              key={im.src}
+              image={im}
+              offset={offsets[i]}
+              delay={i * 55}
+              priority={priority && i < 2}
+              sizes={wide ? "(min-width: 1024px) 16vw, (min-width: 640px) 20vw, 42vw" : "(min-width: 1024px) 14vw, 30vw"}
+              className={i > 1 ? "hidden sm:block" : ""}
+            />
+          ))}
+        </div>
+        <PanelFade color={panel} />
+        {project.concept && (
+          <span className="absolute left-[4%] top-[5%] inline-flex items-center gap-2 rounded-full bg-ink/90 px-3 py-1.5 text-[0.7rem] font-medium uppercase tracking-[0.12em] text-paper">
+            {project.concept.badge}
+          </span>
+        )}
       </div>
     );
   }

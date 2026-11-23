@@ -1,0 +1,21 @@
+{
+  "name": "atelier-oak-email",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Concept piece: hand-coded Atelier & Oak (fictional brand) collection email, with build, checks and screenshots.",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "check": "node scripts/check.mjs",
+    "screenshots": "node scripts/screenshot.mjs",
+    "publish-live": "node scripts/build.mjs --publish",
+    "send-test": "node scripts/send-test.mjs",
+    "all": "node scripts/build.mjs --publish && node scripts/check.mjs && node scripts/screenshot.mjs"
+  },
+  "dependencies": {
+    "doiuse-email": "0.4.1",
+    "juice": "12.2.6",
+    "liquidjs": "10.30.1",
+    "nodemailer": "10.6.1"
+  }
+}

@@ -36,12 +36,23 @@ MODEL = Path(__file__).resolve().parent / "models" / "FSRCNN_x4.pb"
 MIN_WIDTH = 900          # screenshots narrower than this are enlarged
 TARGET_WIDTH = 1200      # ...to this width (a 600px email at 2x)
 PHOTO_QUALITY = 86
+CLIENT_MAX_WIDTH = 1000  # email-client test screenshots: never enlarged, capped, lossy
 
 # Rendered builds are captured with generous whitespace; trim it.
 TRIM = {"rialto/01-desktop-build", "rialto/02-mobile-build"}
 
 # Photography (lossy) rather than screenshots (lossless).
-PHOTOS = {"rialto/hero-photo": 2000}
+PHOTOS = {
+    "rialto/hero-photo": 2000,
+    # Concept email renders are mostly photography; lossless would be 1.6-2.4MB each.
+    "atelier-oak-concept/01-desktop-light": 1200,
+    "atelier-oak-concept/02-desktop-dark": 1200,
+    "atelier-oak-concept/03-mobile-light": 1125,
+    "atelier-oak-concept/04-mobile-dark": 1125,
+    "atelier-oak-concept/05-state-full": 1200,
+    "atelier-oak-concept/06-state-partial": 1200,
+    "atelier-oak-concept/07-state-empty": 1200,
+}
 
 # Close-up crops: (left, top, right, bottom) in SOURCE pixels. When a source is
 # enlarged, the box is scaled with it.
@@ -139,14 +150,19 @@ def main() -> None:
 
     for folder in sorted(p for p in SRC.iterdir() if p.is_dir()):
         slug = folder.name
-        for src in sorted(folder.glob("*.png")):
+        for src in sorted([*folder.glob("*.png"), *folder.glob("*.jpg")]):
             key = f"{slug}/{src.stem}"
             im = Image.open(src).convert("RGB")
             note = ""
             scale = 1.0
             if key in TRIM:
                 im = trim_whitespace(im)
-            if key in PHOTOS:
+            is_client = src.stem.startswith("client-")
+            if is_client:
+                # Real client renders (Email on Acid / Mailgun Inspect): shown as captured, never upscaled.
+                if im.width > CLIENT_MAX_WIDTH:
+                    im = im.resize((CLIENT_MAX_WIDTH, round(im.height * CLIENT_MAX_WIDTH / im.width)), Image.LANCZOS)
+            elif key in PHOTOS:
                 w = PHOTOS[key]
                 if im.width > w:
                     im = im.resize((w, round(im.height * w / im.width)), Image.LANCZOS)
@@ -154,7 +170,7 @@ def main() -> None:
                 scale = TARGET_WIDTH / im.width
                 im, method = super_resolve(im)
                 note = f" (enlarged x{scale:.2f} via {method})"
-            save(im, OUT / slug / f"{src.stem}.webp", photo=key in PHOTOS, enlarged=scale != 1.0)
+            save(im, OUT / slug / f"{src.stem}.webp", photo=key in PHOTOS or is_client, enlarged=scale != 1.0)
             manifest[f"/projects/{slug}/{src.stem}.webp"] = {"width": im.width, "height": im.height}
             processed[key] = (im, scale)
 

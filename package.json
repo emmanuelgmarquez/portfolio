@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
-    "assets": "python3 scripts/process_assets.py"
+    "assets": "python3 scripts/process_assets.py",
+    "email": "npm --prefix email-samples/atelier-oak run all"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.3.3",

@@ -28,6 +28,98 @@ export const imageSizes: Record<string, { width: number; height: number }> = {
     "width": 1208,
     "height": 2248
   },
+  "/projects/atelier-oak-concept/01-desktop-light.webp": {
+    "width": 1200,
+    "height": 5792
+  },
+  "/projects/atelier-oak-concept/02-desktop-dark.webp": {
+    "width": 1200,
+    "height": 5792
+  },
+  "/projects/atelier-oak-concept/03-mobile-light.webp": {
+    "width": 1125,
+    "height": 12171
+  },
+  "/projects/atelier-oak-concept/04-mobile-dark.webp": {
+    "width": 1125,
+    "height": 12171
+  },
+  "/projects/atelier-oak-concept/05-state-full.webp": {
+    "width": 1200,
+    "height": 2688
+  },
+  "/projects/atelier-oak-concept/06-state-partial.webp": {
+    "width": 1200,
+    "height": 2688
+  },
+  "/projects/atelier-oak-concept/07-state-empty.webp": {
+    "width": 1200,
+    "height": 724
+  },
+  "/projects/atelier-oak-concept/client-apple-mail-ios-dark.webp": {
+    "width": 402,
+    "height": 4182
+  },
+  "/projects/atelier-oak-concept/client-apple-mail-ios-light.webp": {
+    "width": 402,
+    "height": 4182
+  },
+  "/projects/atelier-oak-concept/client-apple-mail-macos-dark.webp": {
+    "width": 1000,
+    "height": 2896
+  },
+  "/projects/atelier-oak-concept/client-apple-mail-macos-light.webp": {
+    "width": 1000,
+    "height": 2896
+  },
+  "/projects/atelier-oak-concept/client-gmail-android.webp": {
+    "width": 1000,
+    "height": 11179
+  },
+  "/projects/atelier-oak-concept/client-gmail-ios.webp": {
+    "width": 1000,
+    "height": 10319
+  },
+  "/projects/atelier-oak-concept/client-gmail-web.webp": {
+    "width": 1000,
+    "height": 2242
+  },
+  "/projects/atelier-oak-concept/client-outlook-2016-windows-125.webp": {
+    "width": 1000,
+    "height": 2900
+  },
+  "/projects/atelier-oak-concept/client-outlook-2016-windows.webp": {
+    "width": 1000,
+    "height": 2310
+  },
+  "/projects/atelier-oak-concept/client-outlook-2019-windows.webp": {
+    "width": 1000,
+    "height": 2307
+  },
+  "/projects/atelier-oak-concept/client-outlook-2024-windows-dark.webp": {
+    "width": 1000,
+    "height": 2899
+  },
+  "/projects/atelier-oak-concept/client-outlook-365-windows.webp": {
+    "width": 967,
+    "height": 2897
+  },
+  "/projects/atelier-oak-concept/client-outlook-com-dark.webp": {
+    "width": 1000,
+    "height": 2879
+  },
+  "/projects/atelier-oak-concept/client-outlook-com-light.webp": {
+    "width": 1000,
+    "height": 2892
+  },
+  "/projects/atelier-oak-concept/client-outlook-m365-windows-11.webp": {
+    "width": 1000,
+    "height": 2873
+  },
+  "/projects/atelier-oak-concept/client-yahoo-mail.webp": {
+    "width": 1000,
+    "height": 2328
+  },
   "/projects/car-t-talk/01-registration-scheduling.webp": {
     "width": 974,
     "height": 2250

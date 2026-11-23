@@ -17,6 +17,7 @@ import {
 } from "@/components/case-study";
 import { Contact } from "@/components/contact";
 import { CodeExcerpts } from "@/components/code-excerpts";
+import { AiReview, ClientTests, ConceptEmail, HowBuilt, LiveEmail } from "@/components/concept-study";
 import { Recognition } from "@/components/recognition";
 import { SiteFooter } from "@/components/site-footer";
 import { JsonLd } from "@/components/json-ld";
@@ -62,6 +63,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<Params
   const next = getNextProject(project.slug);
   const isDevicePair = project.slug === "rialto";
   const isBofa = project.slug === "bank-of-america";
+  const concept = project.concept;
 
   // Everything on the page that can be opened in the viewer, in reading order.
   const seen = new Set<string>();
@@ -73,6 +75,13 @@ export default async function CaseStudyPage({ params }: { params: Promise<Params
     ...project.gallery,
     ...(project.featured ? [project.featured.image] : []),
     ...project.details.map((d) => d.image),
+    ...(concept
+      ? [
+          ...Object.values(concept.screens),
+          ...concept.states.map((s) => s.image),
+          ...concept.clientTests.flatMap((t) => (t.image ? [t.image] : [])),
+        ]
+      : []),
     ...extra,
   ]) {
     if (!seen.has(im.src)) {
@@ -110,7 +119,17 @@ export default async function CaseStudyPage({ params }: { params: Promise<Params
         {project.showAwards && <Recognition compact />}
         {isBofa && <BofaDevices />}
         <FullLength project={project} />
-        {project.code && <CodeExcerpts excerpts={project.code} />}
+        {concept && <ConceptEmail concept={concept} panel={project.theme.panel} />}
+        {concept && <HowBuilt concept={concept} />}
+        {project.code && (
+          <CodeExcerpts
+            excerpts={project.code}
+            {...(concept ? { title: concept.codeTitle, intro: concept.codeIntro } : {})}
+          />
+        )}
+        {concept && <AiReview concept={concept} />}
+        {concept && <ClientTests concept={concept} />}
+        {concept && <LiveEmail concept={concept} />}
         {isBofa && <BofaArchive />}
         <Details details={project.details} />
         <Considerations project={project} />
