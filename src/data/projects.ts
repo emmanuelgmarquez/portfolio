@@ -52,7 +52,14 @@ export type Project = {
   seoDescription: string;
   /** Self-initiated concept work for a fictional brand. Adds the concept sections and the "Concept piece" badge. */
   concept?: ConceptStudy;
+  /** Spec work in a real brand's identity that the brand did not commission. Adds the "Spec piece" badge. */
+  spec?: { badge: string; disclaimer: string; liveUrl: string; plainTextUrl: string };
 };
+
+/** Badge shown beside a project's title, if any. */
+export function badgeFor(p: Pick<Project, "concept" | "spec">): string | undefined {
+  return p.concept?.badge ?? p.spec?.badge;
+}
 
 export type ClientTest = {
   /** Screenshot file name: assets-source/<slug>/client-<id>.png */
@@ -248,6 +255,29 @@ const rialto = {
   ),
 };
 
+
+/* ------------------------------------------------- MOTORMOOLAH (spec piece) */
+// Real brand, uncommissioned. 2x Chromium captures of /email-samples/motormoolah/index.html.
+
+const motormoolah = {
+  desktop: img(
+    "/projects/motormoolah-spec/01-desktop-build.webp",
+    "Desktop build",
+    "Motormoolah newsletter at desktop width: navy header with the yellow wordmark, a hero photo of a smiling driver holding her keys, the headline Your motor's not getting any younger, a yellow UK number-plate Enter Reg panel, a Get my guaranteed price button, a four-point proof strip, a Got finance? No problem module, four numbered steps, a Trustpilot quote, three Hub article cards, a Hilton Garage panel and the footer.",
+    "The final build at 600px, captured from the live HTML at 2x.",
+  ),
+  mobile: img(
+    "/projects/motormoolah-spec/02-mobile-build.webp",
+    "Mobile build",
+    "Motormoolah newsletter at 375px: the same sections stacked into one column, with the proof strip as a two-by-two grid, full-width buttons and single-column article cards.",
+    "The same HTML at 375px: two-by-two proof grid, stacked modules and full-width buttons.",
+  ),
+  photo: img(
+    "/projects/motormoolah-spec/hero-photo.webp",
+    "Hero photography",
+    "A smiling driver in an orange jumper sitting in a silver car, holding up her car key through the open window.",
+  ),
+};
 
 /* ------------------------------------------------ ATELIER & OAK (concept) */
 // Fictional brand. Chromium renders from email-samples/atelier-oak/scripts/screenshot.mjs.
@@ -1326,10 +1356,104 @@ does not ensure profits or protect against losses.
       clientTests: atelierClientTests,
     },
   },
+  {
+    slug: "motormoolah-spec",
+    number: "00",
+    title: "Motormoolah",
+    client: "Motormoolah",
+    clientLabel: "Brand",
+    industry: "Automotive / Car buying",
+    category: "Newsletter email design & development",
+    discipline: "Design, copy and HTML development",
+    scope: "Monthly customer newsletter, desktop and mobile",
+    summary:
+      "A newsletter-style email for a UK online car buyer, built in the brand's own navy and yellow to show how its monthly send could look.",
+    intro:
+      "Motormoolah buys cars online, settles any outstanding finance and pays out in minutes. This spec newsletter turns those promises into one scroll: a guaranteed-price hero, a finance reassurance module, the four-step process, real Trustpilot proof and seasonal selling tips.",
+    tags: ["Newsletter", "Email design", "Hand-coded HTML", "Automotive"],
+    overview: [
+      "Spec piece: Motormoolah did not commission this email. Every claim in it, from the fee-free guarantee to finance settlement and the 4.6 Trustpilot rating, comes from the brand's own FAQ and public reviews, so the newsletter could ship with copy edits rather than a rewrite.",
+      "The layout leads with one action. A UK number-plate panel and a bulletproof button carry the valuation call to action, a proof strip answers the cost and speed questions straight away, and the finance module handles the biggest objection before the four steps and the Hub articles give a reason to scroll.",
+    ],
+    technicalScope: [
+      {
+        title: "Hybrid, table-based build",
+        body: "600px table layout with MSO ghost tables for two-column modules, so Outlook on Windows keeps the columns while phones stack them at 620px.",
+      },
+      {
+        title: "Bulletproof buttons and live text",
+        body: "Every headline, the number plate and both buttons are live HTML, with VML roundrects for Outlook. Nothing is baked into an image, so the message survives images-off views.",
+      },
+      {
+        title: "Dark mode and Outlook.com",
+        body: "prefers-color-scheme styles for Apple Mail plus [data-ogsc] overrides for Outlook.com, swapping white panels to deep navy without losing the brand yellow.",
+      },
+      {
+        title: "Tracking-ready links",
+        body: "Every link carries UTM parameters with a utm_content value per module, so a send can report which block drove the valuation clicks.",
+      },
+    ],
+    sequential: false,
+    galleryTitle: "Desktop and mobile",
+    galleryIntro: "Both renders come from the same HTML file. Scroll inside each frame, or open either at full size.",
+    gallery: [motormoolah.desktop, motormoolah.mobile, motormoolah.photo],
+    details: [
+      {
+        image: img(
+          "/projects/motormoolah-spec/details/hero-message.webp",
+          "Hero message and number-plate call to action",
+          "Close-up of the hero copy: the headline Your motor's not getting any younger with younger in yellow, a short paragraph, a yellow UK number plate reading Enter Reg and a yellow Get my guaranteed price button.",
+        ),
+        title: "The ask looks like the product",
+        body: "The valuation starts with a registration, so the call to action is drawn as a UK number plate in live HTML, with the button directly beneath it.",
+      },
+      {
+        image: img(
+          "/projects/motormoolah-spec/details/finance-module.webp",
+          "Finance module",
+          "Close-up of the finance module: a photo of car keys being handed over beside the headline Got finance? No problem. and copy explaining that Motormoolah settles outstanding finance.",
+        ),
+        title: "Answer the biggest objection",
+        body: "Sellers with finance on the car assume they can't sell it. This module tells them early that the finance is settled for them, before they leave the email.",
+      },
+      {
+        image: img(
+          "/projects/motormoolah-spec/details/steps-and-proof.webp",
+          "Four steps and review",
+          "Close-up of the How it works section with four numbered yellow circles, followed by a Trustpilot five-star quote reading Quick valuation, and the agreed price was honoured.",
+        ),
+        title: "Process, then proof",
+        body: "Four numbered steps show how little effort the sale takes, and a real Trustpilot quote follows straight after to back them up.",
+      },
+    ],
+    considerations: [
+      { title: "Brand fidelity", body: "Navy and yellow taken from the brand's logo, its own tagline in the header, and its voice: motor, moolah, no faff." },
+      { title: "Mobile first", body: "The proof strip becomes a two-by-two grid, cards stack and both buttons go full width for a thumb." },
+      { title: "Accuracy", body: "No invented statistics. Every figure is sourced from the brand's FAQ, Trustpilot or its sister company's site." },
+    ],
+    technologies: [
+      "Email design",
+      "Hand-coded HTML/CSS",
+      "MSO ghost tables",
+      "VML bulletproof buttons",
+      "Dark mode (prefers-color-scheme, data-ogsc)",
+      "UTM link tracking",
+      "Accessible alt text",
+    ],
+    theme: { panel: "#FCEBB0", panelInk: "dark" },
+    seoDescription:
+      "Motormoolah spec newsletter: a responsive, hand-coded HTML email for a UK online car buyer, built in the brand's navy and yellow with live-text number-plate call to action.",
+    spec: {
+      badge: "Spec piece",
+      disclaimer: "Not commissioned by or affiliated with Motormoolah or Hilton Garage. Photography from Unsplash.",
+      liveUrl: "/email-samples/motormoolah/index.html",
+      plainTextUrl: "/email-samples/motormoolah/plain.txt",
+    },
+  },
 ];
 
 /** Display order is the array order; numbering follows it automatically. */
-const order = ["bank-of-america", "three-insurance", "car-t-talk", "apokyn", "rialto", "patient-programs", "atelier-oak-concept"];
+const order = ["bank-of-america", "three-insurance", "car-t-talk", "apokyn", "rialto", "motormoolah-spec", "patient-programs", "atelier-oak-concept"];
 export const projects: Project[] = [...projectList]
   .sort((a, b) => order.indexOf(a.slug) - order.indexOf(b.slug))
   .map((p, i) => ({ ...p, number: String(i + 1).padStart(2, "0") }));
@@ -1341,6 +1465,7 @@ export const apokynAssets = apokyn;
 export const patientAssets = pp;
 export const bofaAssets = bofa;
 export const atelierAssets = atelier;
+export const motormoolahAssets = motormoolah;
 
 export function getProject(slug: string) {
   return projects.find((p) => p.slug === slug);

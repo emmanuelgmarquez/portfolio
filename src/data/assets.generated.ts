@@ -303,5 +303,29 @@ export const imageSizes: Record<string, { width: number; height: number }> = {
   "/projects/patient-programs/details/lems-ambassador-variants.webp": {
     "width": 4392,
     "height": 985
+  },
+  "/projects/motormoolah-spec/01-desktop-build.webp": {
+    "width": 1194,
+    "height": 7992
+  },
+  "/projects/motormoolah-spec/details/hero-message.webp": {
+    "width": 1194,
+    "height": 1010
+  },
+  "/projects/motormoolah-spec/details/finance-module.webp": {
+    "width": 1194,
+    "height": 892
+  },
+  "/projects/motormoolah-spec/details/steps-and-proof.webp": {
+    "width": 1194,
+    "height": 1092
+  },
+  "/projects/motormoolah-spec/02-mobile-build.webp": {
+    "width": 734,
+    "height": 10495
+  },
+  "/projects/motormoolah-spec/hero-photo.webp": {
+    "width": 1194,
+    "height": 753
   }
 };

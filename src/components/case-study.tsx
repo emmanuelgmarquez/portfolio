@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, ArrowUpRight, Maximize2 } from "lucide-react";
 import type { Detail, Project, ProjectImage } from "@/data/projects";
-import { rialtoAssets } from "@/data/projects";
+import { badgeFor, rialtoAssets } from "@/data/projects";
 import { ProjectCover, PhoneFrame } from "./project-cover";
 import { LightboxTrigger } from "./lightbox";
 import { Parallax } from "./parallax";
@@ -36,7 +36,12 @@ export function CaseHero({ project, total }: { project: Project; total: number }
             <ConceptBadge label={`${project.concept.badge}: fictional brand`} />
           </p>
         )}
-        <div className={`grid gap-8 pb-12 sm:pb-16 lg:grid-cols-12 lg:gap-10 ${project.concept ? "pt-5 sm:pt-6" : "pt-10 sm:pt-14"}`}>
+        {project.spec && (
+          <p className="pt-8 sm:pt-10">
+            <ConceptBadge label={`${project.spec.badge}: not commissioned by the brand`} />
+          </p>
+        )}
+        <div className={`grid gap-8 pb-12 sm:pb-16 lg:grid-cols-12 lg:gap-10 ${badgeFor(project) ? "pt-5 sm:pt-6" : "pt-10 sm:pt-14"}`}>
           <h1
             className={`display lg:col-span-8 ${
               project.title.length > 14 ? "text-[clamp(3rem,8vw,7.25rem)]" : "text-[clamp(3.4rem,11vw,10rem)]"
@@ -244,12 +249,23 @@ export function FullLength({ project }: { project: Project }) {
   );
 }
 
-/* --------------------------------------------------- Rialto device pair */
+/* ---------------------------------------------- Desktop and mobile pair */
 
-export function DevicePair() {
-  const { desktop, mobile } = rialtoAssets;
+export function DevicePair({
+  desktop = rialtoAssets.desktop,
+  mobile = rialtoAssets.mobile,
+  panel = "#cfe3ee",
+  liveUrl,
+  note,
+}: {
+  desktop?: ProjectImage;
+  mobile?: ProjectImage;
+  panel?: string;
+  liveUrl?: string;
+  note?: string;
+} = {}) {
   return (
-    <section aria-labelledby="devices-title" className="overflow-hidden bg-[#cfe3ee] py-20 sm:py-28">
+    <section aria-labelledby="devices-title" className="overflow-hidden py-20 sm:py-28" style={{ background: panel }}>
       <div className="shell">
         <div className="grid gap-6 lg:grid-cols-12 lg:gap-10">
           <h2 id="devices-title" className="display text-[clamp(2.4rem,5vw,4.5rem)] lg:col-span-7">
@@ -305,6 +321,23 @@ export function DevicePair() {
             </div>
           </div>
         </div>
+
+        {(liveUrl || note) && (
+          <div className="mt-12 flex flex-col gap-4 border-t border-ink/15 pt-6 sm:flex-row sm:items-center sm:justify-between">
+            {note && <p className="max-w-[36rem] text-sm leading-relaxed text-ink/70">{note}</p>}
+            {liveUrl && (
+              <a
+                href={liveUrl}
+                target="_blank"
+                rel="noopener"
+                className="inline-flex h-10 shrink-0 items-center gap-2 self-start rounded-full bg-ink px-4 text-sm text-paper transition-colors hover:bg-signal sm:self-auto"
+              >
+                Open the live HTML
+                <ArrowUpRight size={14} aria-hidden="true" />
+              </a>
+            )}
+          </div>
+        )}
       </div>
     </section>
   );
@@ -408,7 +441,7 @@ export function NextProject({ project }: { project: Project }) {
             <div>
               <p className="flex flex-wrap items-center gap-3 text-sm text-muted">
                 Next case study
-                {project.concept && <ConceptBadge label={project.concept.badge} />}
+                {badgeFor(project) && <ConceptBadge label={badgeFor(project)!} />}
               </p>
               <p className="display mt-3 text-[clamp(2.75rem,8vw,7rem)] transition-colors duration-300 group-hover:text-signal">
                 {project.title}

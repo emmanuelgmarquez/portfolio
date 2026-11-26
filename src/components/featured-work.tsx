@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
-import { projects, type Project } from "@/data/projects";
+import { badgeFor, projects, type Project } from "@/data/projects";
 import { ProjectCover } from "./project-cover";
 import { Reveal } from "./reveal";
 import { ConceptBadge } from "./concept-study";
@@ -89,7 +89,7 @@ function CaseLink() {
 function FeatureRow({ project }: { project: Project }) {
   return (
     <article>
-      <Link href={`/work/${project.slug}`} className="group block" aria-label={`${project.title}${project.concept ? ` (${project.concept.badge.toLowerCase()})` : ""}: view case study`}>
+      <Link href={`/work/${project.slug}`} className="group block" aria-label={`${project.title}${badgeFor(project) ? ` (${badgeFor(project)!.toLowerCase()})` : ""}: view case study`}>
         <Reveal>
           <ProjectCover project={project} variant="feature" />
         </Reveal>
@@ -97,7 +97,7 @@ function FeatureRow({ project }: { project: Project }) {
           <div className="lg:col-span-5">
             <p className="flex flex-wrap items-center gap-3 text-sm tabular-nums text-muted">
               {project.number}
-              {project.concept && <ConceptBadge label={project.concept.badge} />}
+              {badgeFor(project) && <ConceptBadge label={badgeFor(project)!} />}
             </p>
             <h3 className="display mt-2 text-[clamp(2.5rem,5.4vw,4.75rem)] transition-colors duration-300 group-hover:text-signal">
               {project.title}
@@ -120,7 +120,7 @@ function FeatureRow({ project }: { project: Project }) {
 function PairCard({ project }: { project: Project }) {
   return (
     <article>
-      <Link href={`/work/${project.slug}`} className="group block" aria-label={`${project.title}${project.concept ? ` (${project.concept.badge.toLowerCase()})` : ""}: view case study`}>
+      <Link href={`/work/${project.slug}`} className="group block" aria-label={`${project.title}${badgeFor(project) ? ` (${badgeFor(project)!.toLowerCase()})` : ""}: view case study`}>
         <Reveal>
           <ProjectCover project={project} variant="pair" />
         </Reveal>
@@ -128,7 +128,7 @@ function PairCard({ project }: { project: Project }) {
           <div>
             <p className="flex flex-wrap items-center gap-3 text-sm tabular-nums text-muted">
               {project.number}
-              {project.concept && <ConceptBadge label={project.concept.badge} />}
+              {badgeFor(project) && <ConceptBadge label={badgeFor(project)!} />}
             </p>
             <h3 className="display mt-2 text-[clamp(2.5rem,4.6vw,4.25rem)] transition-colors duration-300 group-hover:text-signal">
               {project.title}
