@@ -1,6 +1,6 @@
 import Image from "next/image";
 import type { Project, ProjectImage } from "@/data/projects";
-import { apokynAssets, atelierAssets, bofaAssets, cartAssets, motormoolahAssets, patientAssets, rialtoAssets, threeAssets } from "@/data/projects";
+import { apokynAssets, atelierAssets, bofaAssets, cartAssets, patientAssets, rialtoAssets, threeAssets } from "@/data/projects";
 import { Highlight } from "./code-excerpts";
 
 type Variant = "feature" | "pair" | "hero";
@@ -299,13 +299,11 @@ export function ProjectCover({
     );
   }
 
-  // Rialto and the Motormoolah spec: hero photography with the desktop build and the phone build layered over it.
-  const pair = project.slug === "motormoolah-spec" ? motormoolahAssets : rialtoAssets;
-  const shade = project.slug === "motormoolah-spec" ? "#0c2987" : "#0c2236";
+  // Rialto: resort photography with the desktop build and the phone build layered over it.
   return (
     <div className={base} style={{ background: panel }}>
       <Image
-        src={pair.photo.src}
+        src={rialtoAssets.photo.src}
         alt=""
         fill
         sizes={variant === "pair" ? "(min-width: 1024px) 45vw, 100vw" : "100vw"}
@@ -313,20 +311,16 @@ export function ProjectCover({
         priority={priority}
         className="object-cover transition-transform duration-[1.2s] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.03]"
       />
-      <div
-        aria-hidden="true"
-        className="absolute inset-0"
-        style={{ background: `linear-gradient(to top, ${shade}8c, ${shade}1a 50%, transparent)` }}
-      />
+      <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-[#0c2236]/55 via-[#0c2236]/10 to-transparent" />
       <div
         className={`absolute top-[10%] transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-3 ${
           variant === "pair" ? "left-[8%] w-[56%]" : "left-[8%] w-[56%] sm:left-[14%] sm:w-[42%] lg:w-[34%]"
         }`}
       >
         <Image
-          src={pair.desktop.src}
-          width={pair.desktop.width}
-          height={pair.desktop.height}
+          src={rialtoAssets.desktop.src}
+          width={rialtoAssets.desktop.width}
+          height={rialtoAssets.desktop.height}
           alt=""
           sizes="(min-width: 1024px) 30vw, 55vw"
           quality={90}
@@ -341,9 +335,9 @@ export function ProjectCover({
       >
         <PhoneFrame>
           <Image
-            src={pair.mobile.src}
-            width={pair.mobile.width}
-            height={pair.mobile.height}
+            src={rialtoAssets.mobile.src}
+            width={rialtoAssets.mobile.width}
+            height={rialtoAssets.mobile.height}
             alt=""
             sizes="(min-width: 1024px) 16vw, 34vw"
             quality={90}
@@ -352,11 +346,6 @@ export function ProjectCover({
           />
         </PhoneFrame>
       </div>
-      {project.spec && (
-        <span className="absolute left-[4%] top-[5%] inline-flex items-center gap-2 rounded-full bg-ink/90 px-3 py-1.5 text-[0.7rem] font-medium uppercase tracking-[0.12em] text-paper">
-          {project.spec.badge}
-        </span>
-      )}
     </div>
   );
 }

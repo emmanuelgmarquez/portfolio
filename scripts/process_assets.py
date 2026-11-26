@@ -52,10 +52,6 @@ PHOTOS = {
     "atelier-oak-concept/05-state-full": 1200,
     "atelier-oak-concept/06-state-partial": 1200,
     "atelier-oak-concept/07-state-empty": 1200,
-    # Motormoolah spec: 2x Chromium captures of the live page, photography-heavy.
-    "motormoolah-spec/01-desktop-build": 1200,
-    "motormoolah-spec/02-mobile-build": 750,
-    "motormoolah-spec/hero-photo": 1200,
 }
 
 # Close-up crops: (left, top, right, bottom) in SOURCE pixels. When a source is
@@ -75,11 +71,6 @@ DETAILS: dict[str, list[tuple[str, tuple[int, int, int, int]]]] = {
         ("proof-panel", (0, 1550, 1296, 2090)),
     ],
     "rialto/02-mobile-build": [("mobile-hero", (0, 0, 1056, 1560))],
-    "motormoolah-spec/01-desktop-build": [
-        ("hero-message", (0, 1040, 1194, 2050)),
-        ("finance-module", (0, 2300, 1194, 3192)),
-        ("steps-and-proof", (0, 3208, 1194, 4300)),
-    ],
     "patient-programs/02-ofev-mentor-confirmation": [("ofev-call-instructions", (0, 360, 1300, 1260))],
     "patient-programs/15-alunbrig-registration": [("alunbrig-merge-fields", (0, 80, 606, 330))],
     "patient-programs/16-dupixent-prescribing-information": [("dupixent-merge-fields", (0, 0, 1312, 650))],

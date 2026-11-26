@@ -61,8 +61,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<Params
   const project = getProject(slug);
   if (!project) notFound();
   const next = getNextProject(project.slug);
-  const isDevicePair = project.slug === "rialto" || project.slug === "motormoolah-spec";
-  const spec = project.spec;
+  const isDevicePair = project.slug === "rialto";
   const isBofa = project.slug === "bank-of-america";
   const concept = project.concept;
 
@@ -113,17 +112,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<Params
         {isBofa ? (
           <BofaFeatured />
         ) : isDevicePair ? (
-          spec ? (
-            <DevicePair
-              desktop={project.gallery[0]}
-              mobile={project.gallery[1]}
-              panel={project.theme.panel}
-              liveUrl={spec.liveUrl}
-              note={spec.disclaimer}
-            />
-          ) : (
-            <DevicePair />
-          )
+          <DevicePair />
         ) : (
           project.gallery.length > 0 && <Gallery project={project} />
         )}
