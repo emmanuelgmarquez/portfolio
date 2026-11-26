@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en-GB" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="x-apple-disable-message-reformatting">
+<meta name="format-detection" content="telephone=no, date=no, address=no, email=no, url=no">
+<meta name="color-scheme" content="light dark">
+<meta name="supported-color-schemes" content="light dark">
+<title>Motormoolah newsletter (spec concept) | Emmanuel Marquez</title>
+<meta name="robots" content="noindex">
+<!--[if mso]>
+<noscript><xml><o:OfficeDocumentSettings><o:AllowPNG/><o:PixelsPerInch>96</o:PixelsPerInch></o:OfficeDocumentSettings></xml></noscript>
+<style>table,td,th,h1,h2,h3,p,a,span{font-family:Arial,Helvetica,sans-serif !important;}</style>
+<![endif]-->
+<!--[if !mso]><!-->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+<!--<![endif]-->
+<style>
+  :root{color-scheme:light dark;supported-color-schemes:light dark;}
+  html,body{margin:0 !important;padding:0 !important;width:100% !important;}
+  *{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;}
+  table,td{mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;}
+  img{-ms-interpolation-mode:bicubic;border:0;outline:none;text-decoration:none;display:block;}
+  a{text-decoration:none;}
+  a[x-apple-data-detectors],.unstyle-auto-detected-links a{color:inherit !important;text-decoration:none !important;font-size:inherit !important;font-family:inherit !important;font-weight:inherit !important;line-height:inherit !important;}
+  u + #body a{color:inherit;text-decoration:none;font-size:inherit;font-family:inherit;font-weight:inherit;line-height:inherit;}
+  #MessageViewBody a{color:inherit;text-decoration:none;font-size:inherit;font-family:inherit;font-weight:inherit;line-height:inherit;}
+  .ff{font-family:'Montserrat',Arial,Helvetica,sans-serif;}
+  .btn-y:hover{background:#ffd75a !important;}
+  .card-link:hover{text-decoration:underline !important;}
+
+  @media screen and (max-width:620px){
+    .wrap{width:100% !important;}
+    .px{padding-left:24px !important;padding-right:24px !important;}
+    .stack{display:block !important;width:100% !important;max-width:100% !important;box-sizing:border-box !important;}
+    .stack-r{padding:0 !important;}
+    .outer{padding:12px 8px !important;}
+    .btn{width:100% !important;}
+    .stack-pad{padding:0 0 20px 0 !important;}
+    .img-full{width:100% !important;height:auto !important;}
+    .h1{font-size:34px !important;line-height:38px !important;}
+    .h2{font-size:26px !important;line-height:31px !important;}
+    .hide-m{display:none !important;max-height:0 !important;overflow:hidden !important;mso-hide:all !important;}
+    .center-m{text-align:center !important;}
+    .usp td.u{display:inline-block !important;width:50% !important;box-sizing:border-box;padding:14px 6px !important;border-left:0 !important;}
+    .step{display:block !important;width:100% !important;padding:0 0 18px 0 !important;}
+    .plate{font-size:24px !important;letter-spacing:2px !important;}
+  }
+
+  /* Dark mode (Apple Mail, iOS, Outlook.com via data-ogsc) */
+  @media (prefers-color-scheme: dark){
+    .bg-page{background:#070f2e !important;}
+    .bg-white{background:#0f1a47 !important;}
+    .bg-cream{background:#13205a !important;}
+    .t-ink{color:#ffffff !important;}
+    .t-body{color:#d6dcf2 !important;}
+    .t-muted{color:#a9b3d8 !important;}
+    .bd{border-color:#2a3a80 !important;}
+  }
+  [data-ogsc] .bg-page{background:#070f2e !important;}
+  [data-ogsc] .bg-white{background:#0f1a47 !important;}
+  [data-ogsc] .bg-cream{background:#13205a !important;}
+  [data-ogsc] .t-ink{color:#ffffff !important;}
+  [data-ogsc] .t-body{color:#d6dcf2 !important;}
+  [data-ogsc] .t-muted{color:#a9b3d8 !important;}
+</style>
+</head>
+<body id="body" class="bg-page" style="margin:0;padding:0;background:#eef1f8;word-spacing:normal;">
+
+<!-- Preheader -->
+<div style="display:none;font-size:1px;line-height:1px;max-height:0;max-width:0;opacity:0;overflow:hidden;mso-hide:all;">Guaranteed price, free collection, paid in minutes, and yes, we'll settle your finance.&#8199;&#65279;&#847;&#8199;&#65279;&#847;&#8199;&#65279;&#847;&#8199;&#65279;&#847;&#8199;&#65279;&#847;&#8199;&#65279;&#847;&#8199;&#65279;&#847;&#8199;&#65279;&#847;&#8199;&#65279;&#847;&#8199;&#65279;&#847;&#8199;&#65279;&#847;&#8199;&#65279;&#847;</div>
+
+<!-- Portfolio-only banner: not part of the production email -->
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#111111;">
+<tr><td align="center" style="padding:10px 16px;font-family:Arial,Helvetica,sans-serif;font-size:12px;line-height:18px;color:#d9d9d9;">Spec concept by <a href="https://emmanuelgmarquez.com" style="color:#FDC82F;text-decoration:underline;">Emmanuel Marquez</a>. Not commissioned by or affiliated with Motormoolah or Hilton Garage. Photography: Unsplash.</td></tr>
+</table>
+<div role="article" aria-roledescription="email" aria-label="The Moolah Memo, December" lang="en-GB">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" class="bg-page" style="background:#eef1f8;">
+<tr><td align="center" class="outer" style="padding:24px 12px;">
+
+<!--[if mso]><table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0" align="center"><tr><td><![endif]-->
+<table role="presentation" class="wrap" width="600" cellpadding="0" cellspacing="0" border="0" style="width:600px;max-width:600px;margin:0 auto;">
+
+  <!-- Utility bar -->
+  <tr>
+    <td class="px" style="padding:0 8px 12px 8px;">
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="ff t-muted" style="font-family:'Montserrat',Arial,sans-serif;font-size:11px;line-height:16px;color:#6b7394;font-weight:600;">The Moolah Memo &middot; December</td>
+          <td align="right" class="ff" style="font-family:'Montserrat',Arial,sans-serif;font-size:11px;line-height:16px;"><a href="https://www.motormoolah.com/?utm_source=newsletter&amp;utm_medium=email&amp;utm_campaign=moolah_memo_dec&amp;utm_content=view_online" style="color:#0C2987;font-weight:700;text-decoration:underline;" class="t-ink">View in browser</a></td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+
+  <!-- Header / logo -->
+  <tr>
+    <td style="background:#0C2987;border-radius:14px 14px 0 0;padding:26px 32px 22px 32px;" class="px">
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td valign="middle">
+            <a href="https://www.motormoolah.com/?utm_source=newsletter&amp;utm_medium=email&amp;utm_campaign=moolah_memo_dec&amp;utm_content=logo" style="text-decoration:none;">
+              <!-- Live-text wordmark (swap for /images/logo.svg exported to PNG @2x in production) -->
+              <span class="ff" style="font-family:'Montserrat',Arial,sans-serif;font-size:28px;line-height:30px;font-weight:800;color:#ffffff;letter-spacing:-0.5px;">&pound;&nbsp;Motor</span><span class="ff" style="font-family:'Montserrat',Arial,sans-serif;font-size:28px;line-height:30px;font-weight:800;color:#FDC82F;letter-spacing:-0.5px;">moolah</span><br>
+              <span class="ff" style="font-family:'Montserrat',Arial,sans-serif;font-size:10px;line-height:14px;font-weight:600;color:#ffffff;letter-spacing:0.3px;">Get that Moolah for your <span style="color:#FDC82F;">Motor!</span></span>
+            </a>
+          </td>
+          <td valign="middle" align="right" class="hide-m">
+            <a href="https://www.motormoolah.com/?utm_source=newsletter&amp;utm_medium=email&amp;utm_campaign=moolah_memo_dec&amp;utm_content=nav_sell" class="ff" style="font-family:'Montserrat',Arial,sans-serif;font-size:12px;font-weight:700;color:#ffffff;text-decoration:none;">Sell</a>
+            <span style="color:#3a54b8;">&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+            <a href="https://www.motormoolah.com/reviews?utm_source=newsletter&amp;utm_medium=email&amp;utm_campaign=moolah_memo_dec&amp;utm_content=nav_reviews" class="ff" style="font-family:'Montserrat',Arial,sans-serif;font-size:12px;font-weight:700;color:#ffffff;text-decoration:none;">Reviews</a>
+            <span style="color:#3a54b8;">&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+            <a href="https://www.motormoolah.com/hub?utm_source=newsletter&amp;utm_medium=email&amp;utm_campaign=moolah_memo_dec&amp;utm_content=nav_hub" class="ff" style="font-family:'Montserrat',Arial,sans-serif;font-size:12px;font-weight:700;color:#ffffff;text-decoration:none;">The Hub</a>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+
+  <!-- Hero image -->
+  <tr>
+    <td style="background:#0C2987;padding:0;line-height:0;font-size:0;">
+      <a href="https://www.motormoolah.com/?utm_source=newsletter&amp;utm_medium=email&amp;utm_campaign=moolah_memo_dec&amp;utm_content=hero_image">
+        <img src="https://images.unsplash.com/photo-1794208635274-c3e0bdea3a50?w=1200&amp;h=760&amp;fit=crop&amp;crop=faces,center&amp;q=80&amp;fm=jpg" width="600" height="380" alt="Smiling driver sitting in her car holding the keys" class="img-full" style="width:600px;max-width:100%;height:auto;display:block;border:0;">
+      </a>
+    </td>
+  </tr>
+
+  <!-- Hero copy -->
+  <tr>
+    <td class="px" style="background:#0C2987;padding:36px 48px 12px 48px;" align="center">
+      <p class="ff" style="margin:0 0 12px 0;font-family:'Montserrat',Arial,sans-serif;font-size:12px;line-height:16px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#FDC82F;">December edition</p>
+      <h1 class="ff h1" style="margin:0 0 16px 0;font-family:'Montserrat',Arial,sans-serif;font-size:42px;line-height:46px;font-weight:900;color:#ffffff;letter-spacing:-1px;">Your motor's not getting any <span style="color:#FDC82F;">younger.</span></h1>
+      <p class="ff" style="margin:0 0 26px 0;font-family:'Montserrat',Arial,sans-serif;font-size:16px;line-height:25px;font-weight:500;color:#d6dcf2;">Every month it sits on the drive is another month of depreciation. Get a guaranteed price today, we'll collect it for free, and you'll be paid in minutes. No haggling. No hidden fees. No faff.</p>
+    </td>
+  </tr>
+
+  <!-- Reg plate CTA -->
+  <tr>
+    <td class="px" style="background:#0C2987;padding:0 48px 14px 48px;" align="center">
+      <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="max-width:420px;">
+        <tr>
+          <td style="background:#F9D21A;border:3px solid #111111;border-radius:8px;">
+            <a href="https://www.motormoolah.com/?utm_source=newsletter&amp;utm_medium=email&amp;utm_campaign=moolah_memo_dec&amp;utm_content=reg_plate" style="text-decoration:none;display:block;">
+            <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%">
+              <tr>
+                <td width="44" align="center" valign="middle" style="background:#003399;border-radius:4px 0 0 4px;padding:10px 0;">
+                  <span class="ff" style="font-family:'Montserrat',Arial,sans-serif;font-size:9px;line-height:11px;color:#FDC82F;">&#9733;&#9733;&#9733;</span><br>
+                  <span class="ff" style="font-family:'Montserrat',Arial,sans-serif;font-size:14px;line-height:18px;font-weight:800;color:#ffffff;">UK</span>
+                </td>
+                <td align="center" valign="middle" style="padding:14px 10px;">
+                  <span class="ff plate" style="font-family:'Arial Black','Montserrat',Arial,sans-serif;font-size:30px;line-height:34px;font-weight:900;color:#111111;letter-spacing:4px;">ENTER REG</span>
+                </td>
+              </tr>
+            </table>
+            </a>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+
+  <!-- Hero button -->
+  <tr>
+    <td class="px" style="background:#0C2987;padding:6px 48px 40px 48px;" align="center">
+      <!--[if mso]>
+      <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="https://www.motormoolah.com/?utm_source=newsletter&amp;utm_medium=email&amp;utm_campaign=moolah_memo_dec&amp;utm_content=hero_cta" style="height:56px;v-text-anchor:middle;width:320px;" arcsize="50%" stroke="f" fillcolor="#FDC82F">
+      <w:anchorlock/><center style="color:#0C2987;font-family:Arial,sans-serif;font-size:16px;font-weight:bold;">Get my guaranteed price &rarr;</center>
+      </v:roundrect>
+      <![endif]-->
+      <!--[if !mso]><!-->
+      <a href="https://www.motormoolah.com/?utm_source=newsletter&amp;utm_medium=email&amp;utm_campaign=moolah_memo_dec&amp;utm_content=hero_cta" class="ff btn-y btn" style="display:inline-block;background:#FDC82F;color:#0C2987;font-family:'Montserrat',Arial,sans-serif;font-size:16px;line-height:56px;font-weight:800;text-align:center;text-decoration:none;width:320px;max-width:100%;border-radius:28px;-webkit-text-size-adjust:none;">Get my guaranteed price &rarr;</a>
+      <!--<![endif]-->
+      <p class="ff" style="margin:14px 0 0 0;font-family:'Montserrat',Arial,sans-serif;font-size:12px;line-height:18px;color:#9fb0ea;font-weight:500;">Takes a couple of minutes. Just your reg and a few photos.</p>
+    </td>
+  </tr>
+
+  <!-- USP strip -->
+  <tr>
+    <td class="bg-white" style="background:#ffffff;padding:6px 16px;border-bottom:1px solid #e4e8f3;">
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" class="usp">
+        <tr>
+          <td class="u" align="center" width="25%" style="padding:18px 6px;">
+            <p class="ff t-ink" style="margin:0;font-family:'Montserrat',Arial,sans-serif;font-size:24px;line-height:28px;font-weight:900;color:#0C2987;">&pound;0</p>
+            <p class="ff t-muted" style="margin:4px 0 0 0;font-family:'Montserrat',Arial,sans-serif;font-size:11px;line-height:15px;font-weight:600;color:#5b6488;">fees. Every penny<br>is yours</p>
+          </td>
+          <td class="u" align="center" width="25%" style="padding:18px 6px;border-left:1px solid #e4e8f3;">
+            <p class="ff t-ink" style="margin:0;font-family:'Montserrat',Arial,sans-serif;font-size:24px;line-height:28px;font-weight:900;color:#0C2987;">Free</p>
+            <p class="ff t-muted" style="margin:4px 0 0 0;font-family:'Montserrat',Arial,sans-serif;font-size:11px;line-height:15px;font-weight:600;color:#5b6488;">nationwide<br>collection</p>
+          </td>
+          <td class="u" align="center" width="25%" style="padding:18px 6px;border-left:1px solid #e4e8f3;">
+            <p class="ff t-ink" style="margin:0;font-family:'Montserrat',Arial,sans-serif;font-size:24px;line-height:28px;font-weight:900;color:#0C2987;">Minutes</p>
+            <p class="ff t-muted" style="margin:4px 0 0 0;font-family:'Montserrat',Arial,sans-serif;font-size:11px;line-height:15px;font-weight:600;color:#5b6488;">to get paid by<br>fast transfer</p>
+          </td>
+          <td class="u" align="center" width="25%" style="padding:18px 6px;border-left:1px solid #e4e8f3;">
+            <p class="ff t-ink" style="margin:0;font-family:'Montserrat',Arial,sans-serif;font-size:24px;line-height:28px;font-weight:900;color:#0C2987;">4.6&#9733;</p>
+            <p class="ff t-muted" style="margin:4px 0 0 0;font-family:'Montserrat',Arial,sans-serif;font-size:11px;line-height:15px;font-weight:600;color:#5b6488;">on Trustpilot,<br>1,300+ reviews</p>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+
+  <!-- Feature: finance -->
+  <tr>
+    <td class="bg-white px" style="background:#ffffff;padding:44px 40px 44px 40px;">
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <!--[if mso]><td width="250" valign="middle"><![endif]-->
+          <td class="stack stack-pad" width="250" valign="middle" style="padding:0 24px 0 0;">
+            <img src="https://images.unsplash.com/photo-1727893512947-8bdc773ceb02?w=520&amp;h=560&amp;fit=crop&amp;crop=center&amp;q=80&amp;fm=jpg" width="250" height="269" alt="Car keys being handed from one person to another" class="img-full" style="width:250px;max-width:100%;height:auto;border-radius:12px;display:block;">
+          </td>
+          <!--[if mso]></td><td width="270" valign="middle"><![endif]-->
+          <td class="stack" valign="middle">
+            <p class="ff" style="margin:0 0 10px 0;font-family:'Montserrat',Arial,sans-serif;font-size:11px;line-height:14px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#d9a400;">Outstanding finance?</p>
+            <h2 class="ff h2 t-ink" style="margin:0 0 14px 0;font-family:'Montserrat',Arial,sans-serif;font-size:28px;line-height:33px;font-weight:900;color:#0C2987;letter-spacing:-0.5px;">Got finance?<br>No problem.</h2>
+            <p class="ff t-body" style="margin:0 0 14px 0;font-family:'Montserrat',Arial,sans-serif;font-size:15px;line-height:24px;font-weight:500;color:#3b4366;">We settle the finance with your provider and pay you the difference. Owe more than it's worth? Transfer the balance and we'll clear the lot, so you walk away free and clear for a fresh start.</p>
+            <p class="ff t-muted" style="margin:0 0 20px 0;font-family:'Montserrat',Arial,sans-serif;font-size:13px;line-height:20px;font-weight:600;color:#5b6488;">Just send us an up-to-date settlement figure from your lender.</p>
+            <a href="https://www.motormoolah.com/faqs?utm_source=newsletter&amp;utm_medium=email&amp;utm_campaign=moolah_memo_dec&amp;utm_content=finance_cta" class="ff t-ink" style="font-family:'Montserrat',Arial,sans-serif;font-size:15px;line-height:20px;font-weight:800;color:#0C2987;text-decoration:none;border-bottom:3px solid #FDC82F;padding-bottom:2px;">See how it works &rarr;</a>
+          </td>
+          <!--[if mso]></td><![endif]-->
+        </tr>
+      </table>
+    </td>
+  </tr>
+
+  <!-- 4 easy steps -->
+  <tr>
+    <td class="px" style="background:#0C2987;padding:44px 32px 40px 32px;" align="center">
+      <p class="ff" style="margin:0 0 10px 0;font-family:'Montserrat',Arial,sans-serif;font-size:11px;line-height:14px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#FDC82F;">How it works</p>
+      <h2 class="ff h2" style="margin:0 0 30px 0;font-family:'Montserrat',Arial,sans-serif;font-size:28px;line-height:33px;font-weight:900;color:#ffffff;letter-spacing:-0.5px;">Moolah-ready in 4 easy steps</h2>
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="step" width="25%" valign="top" align="center" style="padding:0 6px;">
+            <table role="presentation" cellpadding="0" cellspacing="0" border="0" align="center"><tr><td width="48" height="48" align="center" valign="middle" style="background:#FDC82F;border-radius:24px;font-family:'Montserrat',Arial,sans-serif;font-size:20px;font-weight:900;color:#0C2987;" class="ff">1</td></tr></table>
+            <p class="ff" style="margin:12px 0 4px 0;font-family:'Montserrat',Arial,sans-serif;font-size:14px;line-height:18px;font-weight:800;color:#ffffff;">Enter your reg</p>
+            <p class="ff" style="margin:0;font-family:'Montserrat',Arial,sans-serif;font-size:12px;line-height:18px;font-weight:500;color:#aebbe8;">Pop it into our simple form.</p>
+          </td>
+          <td class="step" width="25%" valign="top" align="center" style="padding:0 6px;">
+            <table role="presentation" cellpadding="0" cellspacing="0" border="0" align="center"><tr><td width="48" height="48" align="center" valign="middle" style="background:#FDC82F;border-radius:24px;font-family:'Montserrat',Arial,sans-serif;font-size:20px;font-weight:900;color:#0C2987;" class="ff">2</td></tr></table>
+            <p class="ff" style="margin:12px 0 4px 0;font-family:'Montserrat',Arial,sans-serif;font-size:14px;line-height:18px;font-weight:800;color:#ffffff;">Send photos</p>
+            <p class="ff" style="margin:0;font-family:'Montserrat',Arial,sans-serif;font-size:12px;line-height:18px;font-weight:500;color:#aebbe8;">Get a price that's guaranteed.</p>
+          </td>
+          <td class="step" width="25%" valign="top" align="center" style="padding:0 6px;">
+            <table role="presentation" cellpadding="0" cellspacing="0" border="0" align="center"><tr><td width="48" height="48" align="center" valign="middle" style="background:#FDC82F;border-radius:24px;font-family:'Montserrat',Arial,sans-serif;font-size:20px;font-weight:900;color:#0C2987;" class="ff">3</td></tr></table>
+            <p class="ff" style="margin:12px 0 4px 0;font-family:'Montserrat',Arial,sans-serif;font-size:14px;line-height:18px;font-weight:800;color:#ffffff;">We collect</p>
+            <p class="ff" style="margin:0;font-family:'Montserrat',Arial,sans-serif;font-size:12px;line-height:18px;font-weight:500;color:#aebbe8;">Free, nationwide. Or we'll pay you to drop it off.</p>
+          </td>
+          <td class="step" width="25%" valign="top" align="center" style="padding:0 6px;">
+            <table role="presentation" cellpadding="0" cellspacing="0" border="0" align="center"><tr><td width="48" height="48" align="center" valign="middle" style="background:#FDC82F;border-radius:24px;font-family:'Montserrat',Arial,sans-serif;font-size:20px;font-weight:900;color:#0C2987;" class="ff">4</td></tr></table>
+            <p class="ff" style="margin:12px 0 4px 0;font-family:'Montserrat',Arial,sans-serif;font-size:14px;line-height:18px;font-weight:800;color:#ffffff;">Get paid</p>
+            <p class="ff" style="margin:0;font-family:'Montserrat',Arial,sans-serif;font-size:12px;line-height:18px;font-weight:500;color:#aebbe8;">Fast transfer, straight to your bank.</p>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+
+  <!-- Review band -->
+  <tr>
+    <td class="bg-cream px" style="background:#fff8de;padding:38px 48px;" align="center">
+      <p style="margin:0 0 12px 0;font-size:0;line-height:0;">
+        <span style="display:inline-block;background:#00b67a;color:#ffffff;font-family:Arial,sans-serif;font-size:18px;line-height:28px;width:28px;text-align:center;margin:0 2px;">&#9733;</span><span style="display:inline-block;background:#00b67a;color:#ffffff;font-family:Arial,sans-serif;font-size:18px;line-height:28px;width:28px;text-align:center;margin:0 2px;">&#9733;</span><span style="display:inline-block;background:#00b67a;color:#ffffff;font-family:Arial,sans-serif;font-size:18px;line-height:28px;width:28px;text-align:center;margin:0 2px;">&#9733;</span><span style="display:inline-block;background:#00b67a;color:#ffffff;font-family:Arial,sans-serif;font-size:18px;line-height:28px;width:28px;text-align:center;margin:0 2px;">&#9733;</span><span style="display:inline-block;background:#00b67a;color:#ffffff;font-family:Arial,sans-serif;font-size:18px;line-height:28px;width:28px;text-align:center;margin:0 2px;">&#9733;</span>
+      </p>
+      <p class="ff t-ink" style="margin:0 0 12px 0;font-family:'Montserrat',Arial,sans-serif;font-size:21px;line-height:30px;font-weight:800;color:#0C2987;">&ldquo;Quick valuation, and the agreed price was honoured.&rdquo;</p>
+      <p class="ff t-muted" style="margin:0 0 18px 0;font-family:'Montserrat',Arial,sans-serif;font-size:13px;line-height:18px;font-weight:600;color:#5b6488;">Verified Trustpilot review &middot; Rated 4.6 from 1,300+ reviews</p>
+      <a href="https://uk.trustpilot.com/review/motormoolah.com" class="ff t-ink" style="font-family:'Montserrat',Arial,sans-serif;font-size:14px;font-weight:800;color:#0C2987;text-decoration:none;border-bottom:3px solid #FDC82F;padding-bottom:2px;">Read more reviews &rarr;</a>
+    </td>
+  </tr>
+
+  <!-- From The Hub -->
+  <tr>
+    <td class="bg-white px" style="background:#ffffff;padding:44px 32px 20px 32px;">
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td>
+            <p class="ff" style="margin:0 0 6px 0;font-family:'Montserrat',Arial,sans-serif;font-size:11px;line-height:14px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#d9a400;">From The Hub</p>
+            <h2 class="ff h2 t-ink" style="margin:0 0 24px 0;font-family:'Montserrat',Arial,sans-serif;font-size:28px;line-height:33px;font-weight:900;color:#0C2987;letter-spacing:-0.5px;">Sell smarter this winter</h2>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+
+  <!-- Hub: lead article -->
+  <tr>
+    <td class="bg-white px" style="background:#ffffff;padding:0 32px 28px 32px;">
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" class="bd" style="border:1px solid #e4e8f3;border-radius:14px;">
+        <tr>
+          <td style="line-height:0;font-size:0;">
+            <a href="https://www.motormoolah.com/hub?utm_source=newsletter&amp;utm_medium=email&amp;utm_campaign=moolah_memo_dec&amp;utm_content=hub_photos_img">
+            <img src="https://images.unsplash.com/photo-1770884570492-99626c3654d2?w=1072&amp;h=480&amp;fit=crop&amp;crop=focalpoint&amp;fp-x=0.5&amp;fp-y=0.72&amp;fp-z=1.6&amp;q=80&amp;fm=jpg" width="534" height="239" alt="Person taking a photo of a car on their phone" class="img-full" style="width:534px;max-width:100%;height:auto;display:block;border-radius:13px 13px 0 0;">
+            </a>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:22px 24px 24px 24px;">
+            <p class="ff t-muted" style="margin:0 0 6px 0;font-family:'Montserrat',Arial,sans-serif;font-size:11px;line-height:14px;font-weight:700;color:#6b7394;text-transform:uppercase;letter-spacing:1px;">3 min read</p>
+            <h3 class="ff t-ink" style="margin:0 0 8px 0;font-family:'Montserrat',Arial,sans-serif;font-size:20px;line-height:26px;font-weight:800;color:#0C2987;">6 photos that lock in your best price</h3>
+            <p class="ff t-body" style="margin:0 0 14px 0;font-family:'Montserrat',Arial,sans-serif;font-size:14px;line-height:22px;font-weight:500;color:#3b4366;">Your photos are your valuation. Shoot all four corners, the dash with the mileage showing, and the tyres in daylight, and you'll get a firmer number, faster.</p>
+            <a href="https://www.motormoolah.com/hub?utm_source=newsletter&amp;utm_medium=email&amp;utm_campaign=moolah_memo_dec&amp;utm_content=hub_photos" class="ff card-link t-ink" style="font-family:'Montserrat',Arial,sans-serif;font-size:14px;font-weight:800;color:#0C2987;text-decoration:none;">Read the guide &rarr;</a>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+
+  <!-- Hub: two cards -->
+  <tr>
+    <td class="bg-white px" style="background:#ffffff;padding:0 32px 44px 32px;">
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <!--[if mso]><td width="260" valign="top"><![endif]-->
+          <td class="stack stack-pad" width="50%" valign="top" style="padding:0 7px 0 0;">
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" class="bd" style="border:1px solid #e4e8f3;border-radius:14px;">
+              <tr><td style="line-height:0;font-size:0;">
+                <a href="https://www.motormoolah.com/hub?utm_source=newsletter&amp;utm_medium=email&amp;utm_campaign=moolah_memo_dec&amp;utm_content=hub_winter_img"><img src="https://images.unsplash.com/photo-1546545817-e019faa8ad5d?w=520&amp;h=320&amp;fit=crop&amp;crop=center&amp;q=80&amp;fm=jpg" width="258" height="159" alt="Car headlight glowing through falling snow" class="img-full" style="width:100%;max-width:100%;height:auto;display:block;border-radius:13px 13px 0 0;"></a>
+              </td></tr>
+              <tr><td style="padding:18px 18px 20px 18px;">
+                <h3 class="ff t-ink" style="margin:0 0 6px 0;font-family:'Montserrat',Arial,sans-serif;font-size:16px;line-height:21px;font-weight:800;color:#0C2987;">Winter-proof your valuation</h3>
+                <p class="ff t-body" style="margin:0 0 12px 0;font-family:'Montserrat',Arial,sans-serif;font-size:13px;line-height:20px;font-weight:500;color:#3b4366;">Four 10-minute jobs that stop the cold knocking pounds off your price.</p>
+                <a href="https://www.motormoolah.com/hub?utm_source=newsletter&amp;utm_medium=email&amp;utm_campaign=moolah_memo_dec&amp;utm_content=hub_winter" class="ff card-link t-ink" style="font-family:'Montserrat',Arial,sans-serif;font-size:13px;font-weight:800;color:#0C2987;text-decoration:none;">Read more &rarr;</a>
+              </td></tr>
+            </table>
+          </td>
+          <!--[if mso]></td><td width="260" valign="top"><![endif]-->
+          <td class="stack stack-r" width="50%" valign="top" style="padding:0 0 0 7px;">
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" class="bd" style="border:1px solid #e4e8f3;border-radius:14px;">
+              <tr><td style="line-height:0;font-size:0;">
+                <a href="https://www.motormoolah.com/hub?utm_source=newsletter&amp;utm_medium=email&amp;utm_campaign=moolah_memo_dec&amp;utm_content=hub_dvla_img"><img src="https://images.unsplash.com/photo-1574023240744-64c47c8c0676?w=520&amp;h=320&amp;fit=crop&amp;crop=center&amp;q=80&amp;fm=jpg" width="258" height="159" alt="Row of cars parked on a forecourt" class="img-full" style="width:100%;max-width:100%;height:auto;display:block;border-radius:13px 13px 0 0;"></a>
+              </td></tr>
+              <tr><td style="padding:18px 18px 20px 18px;">
+                <h3 class="ff t-ink" style="margin:0 0 6px 0;font-family:'Montserrat',Arial,sans-serif;font-size:16px;line-height:21px;font-weight:800;color:#0C2987;">Sold it? Your DVLA to-do list</h3>
+                <p class="ff t-body" style="margin:0 0 12px 0;font-family:'Montserrat',Arial,sans-serif;font-size:13px;line-height:20px;font-weight:500;color:#3b4366;">V5C, tax refund, insurance. The two-minute admin that wraps up your sale.</p>
+                <a href="https://www.motormoolah.com/hub?utm_source=newsletter&amp;utm_medium=email&amp;utm_campaign=moolah_memo_dec&amp;utm_content=hub_dvla" class="ff card-link t-ink" style="font-family:'Montserrat',Arial,sans-serif;font-size:13px;font-weight:800;color:#0C2987;text-decoration:none;">Read more &rarr;</a>
+              </td></tr>
+            </table>
+          </td>
+          <!--[if mso]></td><![endif]-->
+        </tr>
+      </table>
+    </td>
+  </tr>
+
+  <!-- Sister brand: Hilton Garage -->
+  <tr>
+    <td style="background:#0a1f6b;padding:0;">
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <!--[if mso]><td width="300" valign="middle"><![endif]-->
+          <td class="stack" width="300" valign="middle" style="line-height:0;font-size:0;">
+            <a href="https://www.hiltongarage.co.uk/?utm_source=motormoolah_newsletter&amp;utm_medium=email&amp;utm_campaign=moolah_memo_dec&amp;utm_content=hilton_img"><img src="https://images.unsplash.com/photo-1770319942638-a5989632f2ad?w=600&amp;h=560&amp;fit=crop&amp;crop=center&amp;q=80&amp;fm=jpg" width="300" height="280" alt="Aerial view of rows of used cars ready for sale" class="img-full" style="width:300px;max-width:100%;height:auto;display:block;"></a>
+          </td>
+          <!--[if mso]></td><td width="300" valign="middle"><![endif]-->
+          <td class="stack px" valign="middle" style="padding:30px 32px;">
+            <p class="ff" style="margin:0 0 8px 0;font-family:'Montserrat',Arial,sans-serif;font-size:11px;line-height:14px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#FDC82F;">Buying next?</p>
+            <h2 class="ff" style="margin:0 0 10px 0;font-family:'Montserrat',Arial,sans-serif;font-size:22px;line-height:27px;font-weight:900;color:#ffffff;">Swap the cash for your next motor.</h2>
+            <p class="ff" style="margin:0 0 18px 0;font-family:'Montserrat',Arial,sans-serif;font-size:13px;line-height:20px;font-weight:500;color:#c7d0f0;">Our sister company Hilton Garage is one of the UK's biggest independent car supermarkets, with 1,000+ motors in stock and ready to drive away.</p>
+            <a href="https://www.hiltongarage.co.uk/?utm_source=motormoolah_newsletter&amp;utm_medium=email&amp;utm_campaign=moolah_memo_dec&amp;utm_content=hilton_cta" class="ff" style="font-family:'Montserrat',Arial,sans-serif;font-size:14px;font-weight:800;color:#FDC82F;text-decoration:none;border-bottom:2px solid #FDC82F;padding-bottom:2px;">Browse stock &rarr;</a>
+          </td>
+          <!--[if mso]></td><![endif]-->
+        </tr>
+      </table>
+    </td>
+  </tr>
+
+  <!-- Closing CTA -->
+  <tr>
+    <td class="bg-white px" style="background:#ffffff;padding:48px 48px 50px 48px;" align="center">
+      <h2 class="ff h2 t-ink" style="margin:0 0 10px 0;font-family:'Montserrat',Arial,sans-serif;font-size:30px;line-height:35px;font-weight:900;color:#0C2987;letter-spacing:-0.5px;">Get that Moolah<br>for your motor.</h2>
+      <p class="ff t-body" style="margin:0 0 26px 0;font-family:'Montserrat',Arial,sans-serif;font-size:15px;line-height:23px;font-weight:500;color:#3b4366;">Your price is guaranteed for 2 days, and you've got 7 days to hand it over.</p>
+      <!--[if mso]>
+      <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="https://www.motormoolah.com/?utm_source=newsletter&amp;utm_medium=email&amp;utm_campaign=moolah_memo_dec&amp;utm_content=footer_cta" style="height:56px;v-text-anchor:middle;width:300px;" arcsize="50%" stroke="f" fillcolor="#0C2987">
+      <w:anchorlock/><center style="color:#ffffff;font-family:Arial,sans-serif;font-size:16px;font-weight:bold;">Value my car now &rarr;</center>
+      </v:roundrect>
+      <![endif]-->
+      <!--[if !mso]><!-->
+      <a href="https://www.motormoolah.com/?utm_source=newsletter&amp;utm_medium=email&amp;utm_campaign=moolah_memo_dec&amp;utm_content=footer_cta" class="ff btn" style="display:inline-block;background:#0C2987;color:#ffffff;font-family:'Montserrat',Arial,sans-serif;font-size:16px;line-height:56px;font-weight:800;text-align:center;text-decoration:none;width:300px;max-width:100%;border-radius:28px;border-bottom:4px solid #FDC82F;-webkit-text-size-adjust:none;">Value my car now &rarr;</a>
+      <!--<![endif]-->
+    </td>
+  </tr>
+
+  <!-- Footer -->
+  <tr>
+    <td class="px" style="background:#0C2987;border-radius:0 0 14px 14px;padding:34px 40px 36px 40px;" align="center">
+      <p style="margin:0 0 18px 0;">
+        <span class="ff" style="font-family:'Montserrat',Arial,sans-serif;font-size:20px;font-weight:800;color:#ffffff;">Motor</span><span class="ff" style="font-family:'Montserrat',Arial,sans-serif;font-size:20px;font-weight:800;color:#FDC82F;">moolah</span>
+      </p>
+      <p style="margin:0 0 20px 0;">
+        <a href="https://www.instagram.com/motormoolah/" class="ff" style="font-family:'Montserrat',Arial,sans-serif;font-size:12px;font-weight:700;color:#ffffff;text-decoration:none;">Instagram</a>
+        <span style="color:#3a54b8;">&nbsp;&middot;&nbsp;</span>
+        <a href="https://uk.trustpilot.com/review/motormoolah.com" class="ff" style="font-family:'Montserrat',Arial,sans-serif;font-size:12px;font-weight:700;color:#ffffff;text-decoration:none;">Trustpilot</a>
+        <span style="color:#3a54b8;">&nbsp;&middot;&nbsp;</span>
+        <a href="https://www.motormoolah.com/faqs?utm_source=newsletter&amp;utm_medium=email&amp;utm_campaign=moolah_memo_dec&amp;utm_content=footer_faqs" class="ff" style="font-family:'Montserrat',Arial,sans-serif;font-size:12px;font-weight:700;color:#ffffff;text-decoration:none;">FAQs</a>
+        <span style="color:#3a54b8;">&nbsp;&middot;&nbsp;</span>
+        <a href="https://www.motormoolah.com/contact?utm_source=newsletter&amp;utm_medium=email&amp;utm_campaign=moolah_memo_dec&amp;utm_content=footer_contact" class="ff" style="font-family:'Montserrat',Arial,sans-serif;font-size:12px;font-weight:700;color:#ffffff;text-decoration:none;">Contact</a>
+      </p>
+      <p class="ff" style="margin:0 0 10px 0;font-family:'Montserrat',Arial,sans-serif;font-size:11px;line-height:17px;font-weight:500;color:#9fb0ea;">You're receiving this because you asked Motormoolah for a valuation or signed up for updates.</p>
+      <p class="ff" style="margin:0 0 14px 0;font-family:'Montserrat',Arial,sans-serif;font-size:11px;line-height:17px;font-weight:500;color:#9fb0ea;">Motormoolah, The Mease, Hilton, Derby, DE65 5FH<br>Motormoolah is a trading arm of Hilton Garage Ltd.</p>
+      <p class="ff" style="margin:0;font-family:'Montserrat',Arial,sans-serif;font-size:11px;line-height:17px;font-weight:700;">
+        <a href="{{unsubscribe_url}}" style="color:#ffffff;text-decoration:underline;">Unsubscribe</a>
+        <span style="color:#3a54b8;">&nbsp;&middot;&nbsp;</span>
+        <a href="{{preferences_url}}" style="color:#ffffff;text-decoration:underline;">Email preferences</a>
+        <span style="color:#3a54b8;">&nbsp;&middot;&nbsp;</span>
+        <a href="https://www.motormoolah.com/privacy" style="color:#ffffff;text-decoration:underline;">Privacy</a>
+      </p>
+    </td>
+  </tr>
+
+</table>
+<!--[if mso]></td></tr></table><![endif]-->
+
+</td></tr>
+</table>
+</div>
+</body>
+</html>
